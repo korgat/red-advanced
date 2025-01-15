@@ -1,15 +1,24 @@
 import type { Config } from 'tailwindcss'
-import { COLORS } from './src/const/color.const'
 
 export default {
-	content: [
-		'./src/components/**/*.{js,ts,jsx,tsx,mdx}',
-		'./src/app/**/*.{js,ts,jsx,tsx,mdx}',
-	],
+	content: ['./src/components/**/*.{js,ts,jsx,tsx,mdx}', './src/app/**/*.{js,ts,jsx,tsx,mdx}'],
 	theme: {
 		extend: {
-			colors: COLORS,
-		},
+			colors: {
+				primary: 'var(--color-primary)',
+				background: 'var(--color-background)',
+				border: 'var(--color-border)'
+			},
+			padding: {
+				layout: '1.2rem'
+			},
+			transitionTimingFunction: {
+				DEFAULT: 'ease-in-out'
+			},
+			transitionDuration: {
+				DEFAULT: '333ms'
+			}
+		}
 	},
-	plugins: [],
+	plugins: []
 } satisfies Config

@@ -1,0 +1,22 @@
+import React from 'react'
+
+import Header from './header'
+import { cn } from '@/lib/utils'
+
+interface ContentProps extends React.HTMLAttributes<HTMLDivElement> {}
+
+const Content = (props: ContentProps) => {
+	const { className = '', children, ...rest } = props
+
+	return (
+		<div
+			{...rest}
+			className={cn('flex flex-col p-layout', {}, [className])}
+		>
+			<Header />
+			{children}
+		</div>
+	)
+}
+
+export default Content
