@@ -2,8 +2,8 @@ import React from 'react'
 
 import { IconMenu } from './iconMenu'
 import { ADDITIONAL_LIST_DATA, MAIN_LIST_DATA, SECONDARY_LIST_DATA } from './iconMenu/IconMenu.data'
-import SidebarHeader from './sidebarHeader/SidebarHeader'
-import SubscriptionMenu from './subscriptionMenu/SubscriptionMenu'
+import { SidebarHeader } from './sidebarHeader'
+import { SubscriptionMenu } from './subscriptionMenu'
 import { SUBSCRIPTION_LIST_DATA } from './subscriptionMenu/SubscriptionMenu.data'
 import { cn } from '@/lib/utils'
 
@@ -17,9 +17,11 @@ const SideBar = (props: SideBarProps) => {
 	return (
 		<aside
 			{...rest}
-			className={cn('p-layout overflow-hidden border-r border-border min-h-screen', {}, [
-				className
-			])}
+			className={cn(
+				'p-layout border-r border-border whitespace-nowrap overflow-hidden h-screen',
+				{},
+				[className]
+			)}
 		>
 			<SidebarHeader onBurgerClick={onBurgerClick} />
 			<IconMenu

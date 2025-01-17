@@ -11,7 +11,7 @@ const Content = (props: ContentProps) => {
 	return (
 		<div
 			{...rest}
-			className={cn('flex flex-col p-layout', {}, [className])}
+			className={cn('flex flex-col flex-grow flex-shrink basis-0 p-layout', {}, [className])}
 		>
 			<Header />
 			{children}

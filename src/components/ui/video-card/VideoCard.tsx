@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
+import { PAGE } from '@/configs/public-page.config'
 import { transformDate } from '@/lib/transform-date'
 import { transformViews } from '@/lib/transform-views'
 import { cn } from '@/lib/utils'
@@ -21,32 +22,45 @@ const VideoCard = (props: VideoCardProps) => {
 			{...rest}
 			className={cn('', {}, [className])}
 		>
-			<div>
-				<Link href={item.slug}>
+			<div className='relative rounded-md overflow-hidden mb-1.5'>
+				<Link href={PAGE.VIDEO(item.publicId)}>
 					<Image
 						src={item.thumbnailUrl}
-						width={250}
-						height={140}
+						width={350}
+						height={196}
 						alt={item.title}
 					/>
 				</Link>
 				<Image
+					className='absolute bottom-1 left-1 rounded-full'
 					src={item.channel.avatarUrl}
-					alt={item.channel.name}
+					alt={item.channel.id}
 					width={30}
 					height={30}
 				/>
 			</div>
 			<div>
-				<div>
-					{Icon && <Icon className='text-primary' />}
-					<span>{transformViews(item.viewsCount)}</span>
-					<span>{transformDate(item.createdAt)}</span>
+				<div className='flex items-top text-gray-500 mb-1.5'>
+					{Icon && (
+						<Icon
+							className='text-primary mr-1'
+							size={16}
+						/>
+					)}
+					<span className='mr-auto text-sm'>{transformViews(item.viewsCount)}</span>
+					<span className='text-xs'>{transformDate(item.createdAt)}</span>
 				</div>
-				<p>{item.description}</p>
-				<div>
-					<span>{item.channel.name}</span>
-					<span>{item.channel.isVerified && <Check className='text-green-500' />}</span>
+				<p className='line-clamp-2 mb-2'>{item.description}</p>
+				<div className='flex items-end gap-3'>
+					<span className='text-gray-500 text-xs'>XXXXX</span>
+					<span>
+						{item.channel.isVerified && (
+							<Check
+								className='text-green-500'
+								size={18}
+							/>
+						)}
+					</span>
 				</div>
 			</div>
 		</div>
