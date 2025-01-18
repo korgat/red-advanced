@@ -1,9 +1,11 @@
 'use client'
 
 import { useQuery } from '@tanstack/react-query'
-import { Flame } from 'lucide-react'
+import { Compass, Flame } from 'lucide-react'
 import React from 'react'
 
+import Heading from '@/ui/heading/Heading'
+import SkeletonLoader from '@/ui/skeleton-loader/SkeletonLoader'
 import VideoCard from '@/ui/video-card/VideoCard'
 
 import { cn } from '@/lib/utils'
@@ -23,17 +25,22 @@ const Explore = (props: ExploreProps) => {
 			{...rest}
 			className={cn('', {}, [className])}
 		>
-			<h3>Explore</h3>
+			<Heading icon={Compass}>Explore</Heading>
 			<div className='grid grid-cols-6 gap-5'>
-				{isLoading
-					? 'Loading...'
-					: data?.data.videos.map(video => (
-							<VideoCard
-								key={video.id}
-								icon={Flame}
-								item={video}
-							/>
-						))}
+				{isLoading ? (
+					<SkeletonLoader
+						className='h-44'
+						count={6}
+					/>
+				) : (
+					data?.data.videos.map(video => (
+						<VideoCard
+							key={video.id}
+							icon={Flame}
+							item={video}
+						/>
+					))
+				)}
 			</div>
 		</section>
 	)

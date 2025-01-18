@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Header from './header'
+import Header from './header/Header'
 import { cn } from '@/lib/utils'
 
 interface ContentProps extends React.HTMLAttributes<HTMLDivElement> {}
@@ -11,10 +11,10 @@ const Content = (props: ContentProps) => {
 	return (
 		<div
 			{...rest}
-			className={cn('flex flex-col flex-grow flex-shrink basis-0 p-layout', {}, [className])}
+			className={cn('flex flex-col flex-grow flex-shrink basis-0', {}, [className])}
 		>
 			<Header />
-			{children}
+			<div className='p-layout h-full'>{children}</div>
 		</div>
 	)
 }

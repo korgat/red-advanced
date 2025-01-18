@@ -22,7 +22,7 @@ const Layout = (props: LayoutProps) => {
 		<main
 			{...rest}
 			className={cn(
-				'flex',
+				'flex min-h-screen',
 				{
 					[styles.showedSidebar]: isOpen,
 					[styles.hidedSidebar]: !isOpen

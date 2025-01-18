@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
-import { PAGE } from '@/configs/public-page.config'
+import { PUBLIC } from '@/configs/public.pages'
 import { transformDate } from '@/lib/transform-date'
 import { transformViews } from '@/lib/transform-views'
 import { cn } from '@/lib/utils'
@@ -11,7 +11,7 @@ import type { IVideo } from '@/types/video.types'
 
 interface VideoCardProps extends React.HTMLAttributes<HTMLDivElement> {
 	item: IVideo
-	icon: LucideIcon
+	icon?: LucideIcon
 }
 
 const VideoCard = (props: VideoCardProps) => {
@@ -23,7 +23,7 @@ const VideoCard = (props: VideoCardProps) => {
 			className={cn('', {}, [className])}
 		>
 			<div className='relative rounded-md overflow-hidden mb-1.5'>
-				<Link href={PAGE.VIDEO(item.publicId)}>
+				<Link href={PUBLIC.VIDEO(item.publicId)}>
 					<Image
 						src={item.thumbnailUrl}
 						width={350}

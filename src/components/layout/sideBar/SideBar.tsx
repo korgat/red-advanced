@@ -18,7 +18,7 @@ const SideBar = (props: SideBarProps) => {
 		<aside
 			{...rest}
 			className={cn(
-				'p-layout border-r border-border whitespace-nowrap overflow-hidden h-screen',
+				'p-layout border-r border-border whitespace-nowrap overflow-hidden transition-[width]',
 				{},
 				[className]
 			)}

@@ -1,25 +1,6 @@
-@keyframes hideSidebar {
-	from {
-		width: var(--sidebar-width);
-	}
-
-	to {
-		width: var(--sidebar-width-closed);
-	}
-}
-
-@keyframes showSidebar {
-	from {
-		width: var(--sidebar-width-closed);
-	}
-	to {
-		width: var(--sidebar-width);
-	}
-}
-
 .hidedSidebar {
 	> aside {
-		animation: hideSidebar 0.35s forwards;
+		width: var(--sidebar-width-closed);
 		flex-grow: 0;
 
 		h5 {
@@ -31,7 +12,6 @@
 
 .showedSidebar {
 	> aside {
-		animation: showSidebar 0.3s forwards;
 		width: var(--sidebar-width);
 	}
 }
