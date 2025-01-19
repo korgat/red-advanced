@@ -1,20 +1,21 @@
-import axios from 'axios'
+import { axiosCommon } from '@/api/axios'
 
 import type { IVideo, IVideosPagination } from '@/types/video.types'
 
 class VideoService {
+	public _videoPath = '/videos'
 	getAll(searchTerm?: string | null) {
-		return axios.get<IVideosPagination>('http://localhost:4200/api/videos', {
+		return axiosCommon.get<IVideosPagination>(this._videoPath, {
 			params: {
 				...(searchTerm && { searchTerm: searchTerm })
 			}
 		})
 	}
 	getTrendingVideos() {
-		return axios.get<IVideo[]>('http://localhost:4200/api/videos/trending')
+		return axiosCommon.get<IVideo[]>(`${this._videoPath}/trending`)
 	}
 	getExploreVideos() {
-		return axios.get<IVideosPagination>('http://localhost:4200/api/videos/explore')
+		return axiosCommon.get<IVideosPagination>(`${this._videoPath}/explore`)
 	}
 }
 
