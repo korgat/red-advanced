@@ -1,13 +1,13 @@
 import type { Metadata } from 'next'
 
-import SearchSection from './components/SearchSection'
+import AuthSection from './components/authSection'
 import { NO_INDEX_PAGE } from '@/const/seo.const'
 
 export const metadata: Metadata = {
-	title: 'Search',
+	title: 'Auth',
 	...NO_INDEX_PAGE
 }
 
 export default function SearchPage() {
-	return <SearchSection className='h-full' />
+	return <AuthSection />
 }

@@ -6,11 +6,11 @@ import VideoNotFound from '@/ui/video-not-found/VideoNotFound'
 import { cn } from '@/lib/utils'
 import type { IVideo } from '@/types/video.types'
 
-interface SearchResultProps extends React.HTMLAttributes<HTMLDivElement> {
+interface VideoBlockProps extends React.HTMLAttributes<HTMLDivElement> {
 	videos?: IVideo[]
 }
 
-const SearchResult = (props: SearchResultProps) => {
+const VideoBlock = (props: VideoBlockProps) => {
 	const { className = '', videos, ...rest } = props
 
 	return videos?.length ? (
@@ -30,4 +30,4 @@ const SearchResult = (props: SearchResultProps) => {
 	)
 }
 
-export default SearchResult
+export default VideoBlock

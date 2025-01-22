@@ -7,7 +7,6 @@ export interface IChannel {
 	isVerified: boolean
 	avatarUrl: string
 	bannerUrl: string
-
 	videos: IVideo[]
 	createdAt: string
 }

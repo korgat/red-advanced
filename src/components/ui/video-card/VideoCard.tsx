@@ -1,7 +1,7 @@
+import * as m from 'framer-motion/m'
 import { Check, type LucideIcon } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
 
 import { PUBLIC } from '@/configs/public.pages'
 import { transformDate } from '@/lib/transform-date'
@@ -15,11 +15,19 @@ interface VideoCardProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const VideoCard = (props: VideoCardProps) => {
-	const { className = '', item, icon: Icon, ...rest } = props
-
+	const { className = '', item, icon: Icon, style } = props
 	return (
-		<div
-			{...rest}
+		<m.div
+			whileHover={{
+				scale: 1.05,
+				y: -5
+			}}
+			transition={{
+				type: 'spring',
+				stiffness: 500,
+				damping: 40
+			}}
+			style={style}
 			className={cn('', {}, [className])}
 		>
 			<div className='relative rounded-md overflow-hidden mb-1.5'>
@@ -63,7 +71,7 @@ const VideoCard = (props: VideoCardProps) => {
 					</span>
 				</div>
 			</div>
-		</div>
+		</m.div>
 	)
 }
 

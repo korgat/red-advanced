@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 
-import { Explore } from '@/components/explore'
-import Trending from '@/components/trending/Trending'
+import ExploreSection from './components/ExploreSection'
+import TrendingSection from './components/TrendingSection'
 
 export const metadata: Metadata = {
 	title: 'Home',
@@ -19,11 +19,11 @@ export const metadata: Metadata = {
 export const revalidate = 100
 export const dynamic = 'force-static'
 
-export default function Home() {
+export default function HomePage() {
 	return (
 		<div className='flex flex-col gap-4'>
-			<Trending />
-			<Explore />
+			<TrendingSection />
+			<ExploreSection />
 		</div>
 	)
 }

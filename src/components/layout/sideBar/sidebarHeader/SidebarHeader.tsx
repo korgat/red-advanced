@@ -1,8 +1,8 @@
-import { Menu, SquarePlay } from 'lucide-react'
-import Link from 'next/link'
+import { Menu } from 'lucide-react'
 import React from 'react'
 
-import { PUBLIC } from '@/configs/public.pages'
+import Logo from '@/components/logo/Logo'
+
 import { cn } from '@/lib/utils'
 
 interface SidebarHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -23,17 +23,7 @@ const SidebarHeader = (props: SidebarHeaderProps) => {
 			>
 				<Menu />
 			</button>
-			<Link
-				href={PUBLIC.HOME}
-				className='flex items-center gap-0.5 '
-			>
-				<SquarePlay
-					className='text-primary min-w-7'
-					width={28}
-					height={28}
-				/>
-				<span className='text-xl font-medium'>Red Video</span>
-			</Link>
+			<Logo />
 		</div>
 	)
 }

@@ -15,7 +15,7 @@ const SkeletonLoader = (props: SkeletonLoaderProps) => {
 				<div
 					key={index}
 					{...rest}
-					className={cn('bg-slate-800 rounded-sm h-10 mb-2.5 animate-pulse', {}, [className])}
+					className={cn('bg-slate-800 rounded-sm h-10 animate-pulse', {}, [className])}
 				/>
 			))}
 		</>
