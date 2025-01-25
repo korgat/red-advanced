@@ -1,9 +1,4 @@
-import type { Metadata } from 'next'
-
-export const metadata: Metadata = {
-	title: 'Not Found'
-}
-export default function NotFound() {
+export default function NotFoundPage() {
 	return (
 		<div className='flex items-center justify-center h-screen'>
 			<div className='text-center'>

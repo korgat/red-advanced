@@ -6,19 +6,15 @@ import type ReCAPTCHA from 'react-google-recaptcha'
 import type { UseFormReset } from 'react-hook-form'
 import toast from 'react-hot-toast'
 
-import { clearAuthData } from '@/store/auth/auth.slice'
-
 import type { IAuthData, IAuthForm } from './authForm.types'
 import { PUBLIC } from '@/configs/public.pages'
 import { authService } from '@/services/auth'
 import type { TAuthType } from '@/services/auth/auth.types'
-import { useTypedDispatch } from '@/store'
 
 export const useAuthForm = (type: TAuthType, reset: UseFormReset<IAuthData>) => {
 	const [isPending, startTransition] = useTransition()
 	const recaptchaRef = useRef<ReCAPTCHA>(null)
 	const router = useRouter()
-	const dispatch = useTypedDispatch()
 
 	const { mutateAsync, isPending: isAuthPending } = useMutation({
 		mutationKey: [type],
@@ -48,8 +44,6 @@ export const useAuthForm = (type: TAuthType, reset: UseFormReset<IAuthData>) => 
 			},
 			error: (e: Error) => {
 				if (axios.isAxiosError(e)) {
-					// @ts-expect-error bug with 0 arguments
-					dispatch(clearAuthData())
 					return e.response?.data?.message
 				}
 			}

@@ -3,7 +3,7 @@ import { axiosCommon } from '@/api/axios'
 import type { IVideo, IVideosPagination } from '@/types/video.types'
 
 class VideoService {
-	public path = '/videos'
+	private path = '/videos'
 	getAll(searchTerm?: string | null) {
 		return axiosCommon.get<IVideosPagination>(this.path, {
 			params: {
