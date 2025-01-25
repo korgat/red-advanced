@@ -18,7 +18,7 @@ const ProfileAvatar = (props: ProfileAvatarProps) => {
 		queryFn: () => profileService.getProfile(),
 		refetchInterval: 1800000 //30 min.
 	})
-	console.log(data)
+
 	return (
 		<div
 			{...rest}

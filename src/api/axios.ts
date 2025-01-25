@@ -2,7 +2,9 @@ import type { CreateAxiosDefaults } from 'axios'
 import axios from 'axios'
 import Cookies from 'js-cookie'
 
+import { getErrorMessage } from './ahi.helper'
 import { API_URL } from '@/const/constants'
+import { authService } from '@/services/auth'
 import { ETokens } from '@/services/auth/auth.types'
 
 const options: CreateAxiosDefaults = {
@@ -25,3 +27,35 @@ axiosAuth.interceptors.request.use(config => {
 
 	return config
 })
+
+axiosAuth.interceptors.response.use(
+	config => config,
+	async error => {
+		const originalRequest = error.config
+
+		if (
+			(error?.response?.status === 401 ||
+				getErrorMessage(error) === 'jwt expired' ||
+				getErrorMessage(error) === 'jwt must be provided') &&
+			originalRequest &&
+			!originalRequest._isRetry
+		) {
+			originalRequest._isRetry = true
+
+			try {
+				await authService.getNewTokens()
+				return axiosAuth.request(originalRequest)
+			} catch (error) {
+				if (
+					getErrorMessage(error) === 'jwt expired' ||
+					getErrorMessage(error) === 'Refresh token not passed'
+				) {
+					authService.removeFromStorage()
+					return null
+				}
+			}
+		}
+
+		throw error
+	}
+)

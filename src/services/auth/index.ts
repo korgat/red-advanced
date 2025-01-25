@@ -16,12 +16,19 @@ class AuthService {
 		Cookies.set(ETokens.ACCESS_TOKEN, accessToken, {
 			domain: 'localhost',
 			sameSite: 'strict',
-			expires: 1
+			expires: 1 / 24
 		})
 	}
 
-	private _removeTokenCookie() {
-		Cookies.remove(ETokens.ACCESS_TOKEN)
+	async initializeAuth() {
+		const accessToken = Cookies.get(ETokens.ACCESS_TOKEN)
+		if (accessToken) return
+
+		try {
+			await this.getNewTokens()
+		} catch {
+			store.dispatch(clearAuthData())
+		}
 	}
 
 	async authenticate(type: TAuthType, data: IAuthData, recaptchaToken?: string | null) {
@@ -43,8 +50,7 @@ class AuthService {
 		const res = await axiosCommon.post<boolean>(`${this._path}/logout`)
 
 		if (res.data) {
-			this._removeTokenCookie()
-			store.dispatch(clearAuthData())
+			this.removeFromStorage()
 		}
 
 		return res
@@ -75,6 +81,11 @@ class AuthService {
 		)
 
 		return response.data
+	}
+
+	removeFromStorage() {
+		Cookies.remove(ETokens.ACCESS_TOKEN)
+		store.dispatch(clearAuthData())
 	}
 }
 
