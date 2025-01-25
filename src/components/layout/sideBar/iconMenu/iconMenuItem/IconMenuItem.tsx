@@ -8,10 +8,12 @@ import { cn } from '@/lib/utils'
 
 interface IconMenuItemProps extends React.HTMLAttributes<HTMLLIElement>, IIconMenuItem {
 	active: boolean
+	isSidebarOpen: boolean
 }
 
 const IconMenuItem = memo((props: IconMenuItemProps) => {
-	const { className = '', icon: Icon, name, link, active, ...rest } = props
+	const { className = '', icon: Icon, name, link, active, isSidebarOpen, ...rest } = props
+	console.log(isSidebarOpen)
 
 	return (
 		<li
@@ -24,7 +26,8 @@ const IconMenuItem = memo((props: IconMenuItemProps) => {
 			>
 				<Icon
 					className={cn('min-w-6', {
-						'group-hover:rotate-12 group-hover:text-primary transition': !active
+						'group-hover:rotate-12 group-hover:text-primary transition': !active,
+						'text-primary transition': !isSidebarOpen && active
 					})}
 				/>
 				<span

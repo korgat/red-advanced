@@ -10,15 +10,22 @@ interface IconMenuProps extends React.HTMLAttributes<HTMLElement> {
 	items: IIconMenuItem[]
 	title?: string
 	border?: boolean
+	isSidebarOpen: boolean
 }
 
 const IconMenu = (props: IconMenuProps) => {
-	const { className = '', items, title, border, ...rest } = props
+	const { className = '', items, title, border, isSidebarOpen, ...rest } = props
 	const pathName = usePathname()
 
 	return (
 		<>
-			<h5 className='text-sm opacity-50 mb-3 whitespace-nowrap'>{title}</h5>
+			<h5
+				className={cn('text-sm opacity-50 mb-3 whitespace-nowrap', {
+					'transition-opacity opacity-0': !isSidebarOpen
+				})}
+			>
+				{title}
+			</h5>
 			<nav
 				{...rest}
 				className={cn(
@@ -37,6 +44,7 @@ const IconMenu = (props: IconMenuProps) => {
 							name={item.name}
 							link={item.link}
 							active={!!match(item.link)(pathName)}
+							isSidebarOpen={isSidebarOpen}
 						/>
 					))}
 				</ul>

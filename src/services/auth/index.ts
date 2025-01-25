@@ -10,7 +10,7 @@ import { ETokens, type IAuthResponse, type TAuthType } from './auth.types'
 import { store } from '@/store'
 
 class AuthService {
-	public _path = '/auth'
+	private _path = '/auth'
 
 	private _setTokenCookie(accessToken: string) {
 		Cookies.set(ETokens.ACCESS_TOKEN, accessToken, {

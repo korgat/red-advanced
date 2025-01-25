@@ -4,6 +4,10 @@ export default {
 	content: ['./src/components/**/*.{js,ts,jsx,tsx,mdx}', './src/app/**/*.{js,ts,jsx,tsx,mdx}'],
 	theme: {
 		extend: {
+			width: {
+				'opened-sidebar': 'var(--sidebar-width)',
+				'closed-sidebar': 'var(--sidebar-width-closed)'
+			},
 			colors: {
 				primary: 'var(--color-primary)',
 				background: 'var(--color-background)',
