@@ -2,7 +2,7 @@ import type { CreateAxiosDefaults } from 'axios'
 import axios from 'axios'
 import Cookies from 'js-cookie'
 
-import { API_URL } from '@/const/constans'
+import { API_URL } from '@/const/constants'
 import { ETokens } from '@/services/auth/auth.types'
 
 const options: CreateAxiosDefaults = {
