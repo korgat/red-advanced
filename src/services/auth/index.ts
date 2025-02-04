@@ -1,6 +1,6 @@
 import Cookies from 'js-cookie'
 
-import type { IAuthData } from '@/components/form/auth-form/authForm.types'
+import type { IAuthData } from '@/components/form/auth-form'
 
 import { clearAuthData, setAuthData } from '@/store/auth/auth.slice'
 

@@ -3,7 +3,7 @@ import axios from 'axios'
 import { useRouter } from 'next/navigation'
 import { useRef, useTransition } from 'react'
 import type ReCAPTCHA from 'react-google-recaptcha'
-import type { UseFormReset } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
 
 import type { IAuthData, IAuthForm } from './authForm.types'
@@ -11,10 +11,18 @@ import { PUBLIC } from '@/configs/public.pages'
 import { authService } from '@/services/auth'
 import type { TAuthType } from '@/services/auth/auth.types'
 
-export const useAuthForm = (type: TAuthType, reset: UseFormReset<IAuthData>) => {
+export const useAuthForm = (type: TAuthType) => {
 	const [isPending, startTransition] = useTransition()
 	const recaptchaRef = useRef<ReCAPTCHA>(null)
 	const router = useRouter()
+
+	const {
+		formState: { errors },
+		watch,
+		register,
+		handleSubmit,
+		reset
+	} = useForm<IAuthForm>()
 
 	const { mutateAsync, isPending: isAuthPending } = useMutation({
 		mutationKey: [type],
@@ -22,7 +30,7 @@ export const useAuthForm = (type: TAuthType, reset: UseFormReset<IAuthData>) => 
 			authService.authenticate(type, data, recaptchaRef.current?.getValue())
 	})
 
-	const onSubmit = ({ email, password }: IAuthForm) => {
+	const onSubmit = handleSubmit(({ email, password }: IAuthForm) => {
 		const captchaToken = recaptchaRef.current?.getValue()
 
 		if (!captchaToken) {
@@ -48,12 +56,15 @@ export const useAuthForm = (type: TAuthType, reset: UseFormReset<IAuthData>) => 
 				}
 			}
 		})
-	}
+	})
 
 	const isLoading = isPending || isAuthPending
 
 	return {
 		onSubmit,
+		register,
+		watch,
+		errors,
 		recaptchaRef,
 		isLoading
 	}

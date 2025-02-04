@@ -12,6 +12,7 @@ import {
 
 import type { IIconMenuItem } from './iconMenuItem/IconMenuItem.types'
 import { PUBLIC } from '@/configs/public.pages'
+import { STUDIO } from '@/configs/studio.pages'
 
 export const MAIN_LIST_DATA: IIconMenuItem[] = [
 	{
@@ -58,7 +59,7 @@ export const ADDITIONAL_LIST_DATA: IIconMenuItem[] = [
 	{
 		icon: Settings,
 		name: 'Settings',
-		link: PUBLIC.SETTINGS
+		link: STUDIO.SETTINGS
 	},
 	{
 		icon: Info,

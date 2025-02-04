@@ -2,12 +2,10 @@
 
 import React, { useState } from 'react'
 import ReCAPTCHA from 'react-google-recaptcha'
-import { useForm } from 'react-hook-form'
 
 import Button from '@/ui/button/Button'
-import Field from '@/ui/field/field'
+import Field from '@/ui/field/Field'
 
-import type { IAuthForm } from './authForm.types'
 import { useAuthForm } from './useAuthForm'
 import { cn } from '@/lib/utils'
 
@@ -18,15 +16,10 @@ interface AuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 const AuthForm = (props: AuthFormProps) => {
 	const { className = '', ...rest } = props
 	const [isLogin, setIsLogin] = useState(true)
-	const {
-		formState: { errors },
-		watch,
-		register,
-		handleSubmit,
-		reset
-	} = useForm<IAuthForm>()
 
-	const { isLoading, onSubmit, recaptchaRef } = useAuthForm(isLogin ? 'login' : 'register', reset)
+	const { isLoading, onSubmit, recaptchaRef, errors, register, watch } = useAuthForm(
+		isLogin ? 'login' : 'register'
+	)
 
 	return (
 		<div
@@ -53,7 +46,7 @@ const AuthForm = (props: AuthFormProps) => {
 					Register
 				</Button>
 			</div>
-			<form onSubmit={handleSubmit(onSubmit)}>
+			<form onSubmit={onSubmit}>
 				<Field
 					label='Email'
 					type='email'

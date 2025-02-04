@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils'
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	children?: ReactNode
 	isLoading?: boolean
-	variant?: 'primary' | 'secondary' | 'simple'
+	variant?: 'primary' | 'secondary' | 'simple' | 'outline'
 }
 
 const Button = (props: ButtonProps) => {
@@ -19,7 +19,8 @@ const Button = (props: ButtonProps) => {
 				{
 					'bg-primary text-white hover:bg-red-400': variant === 'primary',
 					'bg-gray-600 text-white hover:bg-gray-500': variant === 'secondary',
-					'bg-border rounded font-medium hover:bg-gray-700/95': variant === 'simple'
+					'bg-border rounded font-medium hover:bg-gray-700/95': variant === 'simple',
+					'border-gray-500 border font-medium hover:border-white': variant === 'outline'
 				},
 				[className]
 			)}

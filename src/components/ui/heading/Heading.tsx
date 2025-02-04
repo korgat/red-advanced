@@ -10,15 +10,17 @@ interface HeadingProps extends React.HTMLAttributes<HTMLHeadingElement> {
 }
 
 const Heading = (props: HeadingProps) => {
-	const { className = '', icon: Icon, children, tag: Tag = 'h2', ...rest } = props
+	const { className, icon: Icon, children, tag: Tag = 'h2', ...rest } = props
 
 	return (
 		<div
 			{...rest}
-			className={cn('flex items-center gap-1.5 mb-4', {}, [className])}
+			className={cn('flex items-center gap-1.5 mb-4 text-gray-200 text-lg font-semibold', {}, [
+				className
+			])}
 		>
 			{Icon && <Icon className='text-primary' />}
-			<Tag className='text-gray-200 text-lg font-semibold'>{children}</Tag>
+			<Tag>{children}</Tag>
 		</div>
 	)
 }

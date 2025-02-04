@@ -1,13 +1,9 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
 import React from 'react'
-import { useSelector } from 'react-redux'
 
-import AuthForm from '@/components/form/auth-form/AuthForm'
+import { AuthForm } from '@/components/form/auth-form'
 import Logo from '@/components/logo/Logo'
-
-import { selectIsAuth } from '@/store/auth/auth.selectors'
 
 import { cn } from '@/lib/utils'
 
@@ -15,13 +11,6 @@ interface AuthSectionProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 const AuthSection = (props: AuthSectionProps) => {
 	const { className = '', ...rest } = props
-	const accessToken = useSelector(selectIsAuth)
-	const router = useRouter()
-
-	// useEffect(() => {
-	// 	if (!accessToken) return
-	// 	router.push(PUBLIC.HOME)
-	// }, [accessToken, router])
 
 	return (
 		<div

@@ -2,7 +2,7 @@ import type { CreateAxiosDefaults } from 'axios'
 import axios from 'axios'
 import Cookies from 'js-cookie'
 
-import { getErrorMessage } from './ahi.helper'
+import { getErrorMessage } from './api.helper'
 import { API_URL } from '@/const/constants'
 import { authService } from '@/services/auth'
 import { ETokens } from '@/services/auth/auth.types'

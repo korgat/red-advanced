@@ -1,24 +1,19 @@
-import { useQuery } from '@tanstack/react-query'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
 import SkeletonLoader from '@/ui/skeleton-loader/SkeletonLoader'
 
+import { useProfile } from '@/hooks/useProfile'
+
 import { STUDIO } from '@/configs/studio.pages'
 import { cn } from '@/lib/utils'
-import { profileService } from '@/services/profile'
 
 interface ProfileAvatarProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 const ProfileAvatar = (props: ProfileAvatarProps) => {
 	const { className = '', ...rest } = props
-	const { data, isPending } = useQuery({
-		queryKey: ['profile'],
-		queryFn: () => profileService.getProfile(),
-		refetchInterval: 1800000 //30 min.
-	})
-
+	const { data, isPending } = useProfile()
 	return (
 		<div
 			{...rest}
