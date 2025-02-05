@@ -13,7 +13,6 @@ interface IconMenuItemProps extends React.HTMLAttributes<HTMLLIElement>, IIconMe
 
 const IconMenuItem = memo((props: IconMenuItemProps) => {
 	const { className = '', icon: Icon, name, link, active, isSidebarOpen, ...rest } = props
-	console.log(isSidebarOpen)
 
 	return (
 		<li

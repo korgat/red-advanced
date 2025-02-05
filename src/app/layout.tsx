@@ -11,6 +11,7 @@ const notoSans = Noto_Sans({
 })
 
 export const metadata: Metadata = {
+	metadataBase: new URL(process.env.DOMAIN || ''),
 	title: {
 		absolute: 'RED Video',
 		template: `%s | RED Video`

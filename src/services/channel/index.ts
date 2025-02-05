@@ -1,10 +1,16 @@
-import { axiosAuth } from '@/api/axios'
+import { axiosCommon } from '@/api/axios'
+
+import type { IChannel } from '@/types/chanel.types'
 
 export class ChannelService {
 	private path = '/channels'
 
+	getAllChannels() {
+		return axiosCommon.get<IChannel[]>(this.path)
+	}
+
 	getChannel(slug: string | null) {
-		return axiosAuth.get(`${this.path}/by-slug/${slug}`)
+		return axiosCommon.get<IChannel>(`${this.path}/by-slug/${slug}`)
 	}
 }
 

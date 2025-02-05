@@ -20,7 +20,7 @@ const MyChannelLink = (props: MyChannelLinkProps) => {
 	const linkUrl = data?.data?.channel?.slug || ''
 
 	if (!linkUrl) return null
-	const isActive = !!match(linkUrl)(pathName)
+	const isActive = !!match(PUBLIC.CHANNEL(linkUrl))(pathName)
 	return (
 		<Link
 			{...rest}
