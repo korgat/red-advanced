@@ -1,10 +1,13 @@
 'use client'
 
 import { useQuery } from '@tanstack/react-query'
+import dynamic from 'next/dynamic'
 import { useSearchParams } from 'next/navigation'
 import React from 'react'
 
 import VideoSection from '@/components/video-section/VideoSection'
+
+import SkeletonLoader from '@/ui/skeleton-loader/SkeletonLoader'
 
 import { cn } from '@/lib/utils'
 import { videoService } from '@/services/video'
@@ -32,3 +35,15 @@ const SearchSection = (props: SearchSectionProps) => {
 }
 
 export default SearchSection
+
+export const DynamicSearchSection = dynamic(() => Promise.resolve(SearchSection), {
+	ssr: false,
+	loading: () => (
+		<div className='grid grid-cols-6 gap-5 mt-4'>
+			<SkeletonLoader
+				count={3}
+				className='h-44 rounded-md'
+			/>
+		</div>
+	)
+})

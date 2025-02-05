@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 
-import SearchSection from './components/SearchSection'
+import { DynamicSearchSection } from './components/SearchSection'
 import { NO_INDEX_PAGE } from '@/const/seo.const'
 
 export const metadata: Metadata = {
@@ -9,5 +9,5 @@ export const metadata: Metadata = {
 }
 
 export default function SearchPage() {
-	return <SearchSection className='h-full' />
+	return <DynamicSearchSection className='h-full' />
 }
