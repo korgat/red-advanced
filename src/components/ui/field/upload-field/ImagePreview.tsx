@@ -20,8 +20,8 @@ const ImagePreview = (props: ImagePreviewProps) => {
 
 	return (
 		<div
-			className={cn('mt-3', {}, [className])}
 			{...rest}
+			className={cn('mt-3', {}, [className])}
 		>
 			{isLoading ? (
 				<SkeletonLoader
@@ -35,8 +35,12 @@ const ImagePreview = (props: ImagePreviewProps) => {
 					<div className='relative w-max'>
 						{!!overlay && (
 							<Image
+								style={{
+									width,
+									height
+								}}
 								alt='Overlay'
-								className='rounded-md absolute top-0 left-0 w-full h-full'
+								className='rounded-md absolute top-0 left-0 w-full'
 								src={overlay}
 								width={width}
 								height={height}
@@ -44,8 +48,12 @@ const ImagePreview = (props: ImagePreviewProps) => {
 							/>
 						)}
 						<Image
+							style={{
+								width,
+								height
+							}}
 							alt='Uploaded file'
-							className='rounded-md'
+							className='rounded-md object-cover'
 							src={value}
 							width={width}
 							height={height}

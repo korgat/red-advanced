@@ -65,18 +65,15 @@ const SettingsForm = (props: SettingsFormProps) => {
 						<Controller
 							control={control}
 							name='channel.avatarUrl'
-							render={({ fieldState, field }) => {
-								console.log(field)
-								return (
-									<UploadField
-										label='Avatar'
-										folder='avatars'
-										value={field.value}
-										onChange={field.onChange}
-										errorMessage={fieldState.error?.message}
-									/>
-								)
-							}}
+							render={({ fieldState, field }) => (
+								<UploadField
+									label='Avatar'
+									folder='avatars'
+									value={field.value}
+									onChange={field.onChange}
+									errorMessage={fieldState.error?.message}
+								/>
+							)}
 						/>
 
 						<Controller

@@ -29,7 +29,7 @@ const ProfileAvatar = (props: ProfileAvatarProps) => {
 						alt={data?.data.name || 'user'}
 						width={40}
 						height={40}
-						className='rounded-lg clear-start min-w-10'
+						className='rounded-lg clear-start min-w-10 h-10 object-cover'
 					/>
 					{data?.data.verificationToken && (
 						<div className='absolute -bottom-3.5 -left-4  text-xs bg-red-600 p-0.5 px-1 text-center rounded-lg whitespace-nowrap'>

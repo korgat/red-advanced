@@ -15,6 +15,12 @@ import { cn } from '@/lib/utils'
 const DynamicLogoutButton = dynamic(() => import('./logout-button').then(mod => mod.LogoutButton), {
 	ssr: false
 })
+const DynamicChannelLink = dynamic(
+	() => import('./my-channel-link').then(mod => mod.MyChannelLink),
+	{
+		ssr: false
+	}
+)
 
 interface SideBarProps extends React.HTMLAttributes<HTMLElement> {}
 
@@ -46,8 +52,13 @@ const SideBar = (props: SideBarProps) => {
 				border
 			/>
 			<IconMenu
+				className='mb-0'
 				isSidebarOpen={isSidebarOpen}
 				items={SECONDARY_LIST_DATA}
+			/>
+			<DynamicChannelLink
+				className='mb-5'
+				isSidebarOpen={isSidebarOpen}
 			/>
 			<SubscriptionMenu
 				isSidebarOpen={isSidebarOpen}
