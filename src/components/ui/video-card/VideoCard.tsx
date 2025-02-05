@@ -4,8 +4,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import { PUBLIC } from '@/configs/public.pages'
+import { formatCount } from '@/lib/format-count'
 import { transformDate } from '@/lib/transform-date'
-import { transformViews } from '@/lib/transform-views'
 import { cn } from '@/lib/utils'
 import type { IVideo } from '@/types/video.types'
 
@@ -55,12 +55,14 @@ const VideoCard = (props: VideoCardProps) => {
 							size={16}
 						/>
 					)}
-					<span className='mr-auto text-sm'>{transformViews(item.viewsCount)}</span>
+					<span className='mr-auto text-sm'>{formatCount(item.viewsCount)} views</span>
 					<span className='text-xs'>{transformDate(item.createdAt)}</span>
 				</div>
 				<p className='line-clamp-2 mb-2'>{item.description}</p>
-				<div className='flex items-end gap-3'>
-					<span className='text-gray-500 text-xs'>XXXXX</span>
+				<div className='flex items-center gap-3'>
+					<Link href={PUBLIC.CHANNEL(item.channel.slug)}>
+						<span className='text-gray-500 text-xs'>{item.channel.user.name}</span>
+					</Link>
 					<span>
 						{item.channel.isVerified && (
 							<Check
