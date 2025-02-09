@@ -1,4 +1,4 @@
-import { axiosCommon } from '@/api/axios'
+import { axiosAuth, axiosCommon } from '@/api/axios'
 
 import type { IChannel } from '@/types/chanel.types'
 
@@ -11,6 +11,10 @@ export class ChannelService {
 
 	getChannel(slug: string | null) {
 		return axiosCommon.get<IChannel>(`${this.path}/by-slug/${slug}`)
+	}
+
+	toggleSubscribe(channelSlug: string) {
+		return axiosAuth.patch(`${this.path}/toggle-subscribe/${channelSlug}`)
 	}
 }
 

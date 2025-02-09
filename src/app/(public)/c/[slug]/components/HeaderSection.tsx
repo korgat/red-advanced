@@ -1,8 +1,11 @@
+'use client'
+
 import { Check } from 'lucide-react'
 import Image from 'next/image'
 import React from 'react'
 
-import Button from '@/ui/button/Button'
+import { DynamicSubscriptionButton } from '@/components/subscription-button'
+
 import Heading from '@/ui/heading/Heading'
 
 import { formatCount } from '@/lib/format-count'
@@ -26,7 +29,8 @@ const HeaderSection = (props: HeaderSectionProps) => {
 				src={channel.bannerUrl}
 				width={1284}
 				height={207}
-				className='rounded-3xl h-[207px] object-cover mb-8'
+				priority
+				className='rounded-3xl h-[207px] w-full object-cover mb-8'
 			/>
 			<div className='flex gap-7 w-1/2'>
 				<Image
@@ -34,6 +38,7 @@ const HeaderSection = (props: HeaderSectionProps) => {
 					src={channel.avatarUrl}
 					width={150}
 					height={150}
+					priority
 					className='rounded-xl object-cover h-[150px] w-[150px]'
 				/>
 				<div>
@@ -52,7 +57,7 @@ const HeaderSection = (props: HeaderSectionProps) => {
 						<div>{channel.videos.length} videos</div>
 					</div>
 					<article className='text-gray-300 text-sm mb-3'>{channel.description}</article>
-					<Button variant='primary'>Subscribe</Button>
+					<DynamicSubscriptionButton slug={channel.slug} />
 				</div>
 			</div>
 		</div>

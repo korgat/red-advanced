@@ -9,7 +9,7 @@ export async function middleware(request: NextRequest) {
 	const url = new URL(request.url)
 	const pathname = url.pathname
 
-	if (pathname.includes(STUDIO.HOME)) {
+	if (pathname.includes(STUDIO.HOME) || pathname.includes(PUBLIC.SUBSCRIPTIONS)) {
 		return protectStudio(request)
 	}
 
@@ -19,5 +19,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-	matcher: ['/studio/:path*', '/auth/:path*', '/settings/:path*']
+	matcher: ['/studio/:path*', '/auth/:path*', '/settings/:path*', '/my/:path*']
 }

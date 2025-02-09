@@ -2,7 +2,7 @@ import { type ButtonHTMLAttributes, type ReactNode } from 'react'
 
 import { cn } from '@/lib/utils'
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	children?: ReactNode
 	isLoading?: boolean
 	variant?: 'primary' | 'secondary' | 'simple' | 'outline'

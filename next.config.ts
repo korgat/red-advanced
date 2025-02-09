@@ -2,7 +2,12 @@ import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
 	images: {
-		domains: ['encrypted-tbn0.gstatic.com'] // Add the domain here
+		remotePatterns: [
+			{
+				protocol: 'https',
+				hostname: 'encrypted-tbn0.gstatic.com'
+			}
+		]
 	},
 	reactStrictMode: true,
 	poweredByHeader: false,

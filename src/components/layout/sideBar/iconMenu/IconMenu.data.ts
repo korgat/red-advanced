@@ -32,11 +32,6 @@ export const MAIN_LIST_DATA: IIconMenuItem[] = [
 ]
 
 export const SECONDARY_LIST_DATA: IIconMenuItem[] = [
-	// {
-	// 	icon: TvMinimalPlay,
-	// 	name: 'My channel',
-	// 	link: PUBLIC.MY_CHANNEL
-	// },
 	{
 		icon: CirclePlay,
 		name: 'Subscriptions',

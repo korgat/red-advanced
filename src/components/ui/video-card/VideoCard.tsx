@@ -39,13 +39,15 @@ const VideoCard = (props: VideoCardProps) => {
 						alt={item.title}
 					/>
 				</Link>
-				<Image
-					className='absolute bottom-1 left-1 rounded-full'
-					src={item.channel.avatarUrl}
-					alt={item.channel.id}
-					width={30}
-					height={30}
-				/>
+				<Link href={PUBLIC.CHANNEL(item.channel.slug)}>
+					<Image
+						className='absolute bottom-1 left-1 rounded-full'
+						src={item.channel.avatarUrl}
+						alt={item.channel.id}
+						width={30}
+						height={30}
+					/>
+				</Link>
 			</div>
 			<div>
 				<div className='flex items-top text-gray-500 mb-1.5'>
