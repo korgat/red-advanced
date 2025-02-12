@@ -1,4 +1,5 @@
 import * as m from 'framer-motion/m'
+import parse from 'html-react-parser'
 import { Check, type LucideIcon } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -34,9 +35,10 @@ const VideoCard = (props: VideoCardProps) => {
 				<Link href={PUBLIC.VIDEO(item.publicId)}>
 					<Image
 						src={item.thumbnailUrl}
-						width={350}
-						height={196}
+						width={400}
+						height={225}
 						alt={item.title}
+						quality={100}
 					/>
 				</Link>
 				<Link href={PUBLIC.CHANNEL(item.channel.slug)}>
@@ -46,6 +48,7 @@ const VideoCard = (props: VideoCardProps) => {
 						alt={item.channel.id}
 						width={30}
 						height={30}
+						quality={100}
 					/>
 				</Link>
 			</div>
@@ -60,7 +63,7 @@ const VideoCard = (props: VideoCardProps) => {
 					<span className='mr-auto text-sm'>{formatCount(item.viewsCount)} views</span>
 					<span className='text-xs'>{transformDate(item.createdAt)}</span>
 				</div>
-				<p className='line-clamp-2 mb-2'>{item.description}</p>
+				<article className='line-clamp-2 mb-2'>{parse(item.description)}</article>
 				<div className='flex items-center gap-3'>
 					<Link href={PUBLIC.CHANNEL(item.channel.slug)}>
 						<span className='text-gray-500 text-xs'>{item.channel.user.name}</span>

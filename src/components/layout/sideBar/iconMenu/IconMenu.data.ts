@@ -6,7 +6,9 @@ import {
 	History,
 	Info,
 	Joystick,
-	Settings
+	LayoutGridIcon,
+	Settings,
+	UploadIcon
 } from 'lucide-react'
 
 import type { IIconMenuItem } from './iconMenuItem/IconMenuItem.types'
@@ -49,12 +51,25 @@ export const SECONDARY_LIST_DATA: IIconMenuItem[] = [
 	}
 ]
 
-export const ADDITIONAL_LIST_DATA: IIconMenuItem[] = [
+export const STUDIO_LIST_DATA: IIconMenuItem[] = [
+	{
+		icon: LayoutGridIcon,
+		name: 'Studio',
+		link: STUDIO.HOME
+	},
 	{
 		icon: Settings,
 		name: 'Settings',
 		link: STUDIO.SETTINGS
 	},
+	{
+		icon: UploadIcon,
+		name: 'Upload video',
+		link: STUDIO.UPLOAD_VIDEO
+	}
+]
+
+export const ADDITIONAL_LIST_DATA: IIconMenuItem[] = [
 	{
 		icon: Info,
 		name: 'Send Feedback',

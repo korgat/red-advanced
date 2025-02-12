@@ -21,6 +21,7 @@ const SubscriptionMenuItem = (props: SubscriptionMenuItemProps) => {
 			<Link
 				className='flex items-center gap-5 py-1.5 group whitespace-nowrap'
 				href={link}
+				title={name}
 			>
 				<Image
 					className='rounded-full group-hover:scale-105'

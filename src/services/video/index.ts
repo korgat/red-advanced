@@ -1,6 +1,6 @@
 import { axiosCommon } from '@/api/axios'
 
-import type { IVideo, IVideosPagination } from '@/types/video.types'
+import type { ISingleVideoResponse, IVideo, IVideosPagination } from '@/types/video.types'
 
 class VideoService {
 	private path = '/videos'
@@ -11,6 +11,11 @@ class VideoService {
 			}
 		})
 	}
+
+	getByPublicId(publicId?: string | null) {
+		return axiosCommon.get<ISingleVideoResponse>(`${this.path}/by-publicId/${publicId}`)
+	}
+
 	getTrendingVideos() {
 		return axiosCommon.get<IVideo[]>(`${this.path}/trending`)
 	}

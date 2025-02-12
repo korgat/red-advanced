@@ -43,6 +43,7 @@ const LogoutButton = (props: LogoutButtonProps) => {
 				},
 				[className]
 			)}
+			title='Logout'
 			onClick={() => mutate()}
 		>
 			<LogOut className='min-w-6 group-hover:rotate-12 group-hover:text-primary transition' />

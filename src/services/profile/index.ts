@@ -13,6 +13,9 @@ class ProfileService {
 	updateProfile(data: ISettingsForm) {
 		return axiosAuth.put<IFullUser>(`${this.path}/profile`, data)
 	}
+	toggleLike(videoId: string) {
+		return axiosAuth.put(`${this.path}/profile/likes`, { videoId })
+	}
 }
 
 export const profileService = new ProfileService()

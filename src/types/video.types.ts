@@ -18,3 +18,11 @@ export interface IVideo {
 export interface IVideosPagination extends IPagination {
 	videos: IVideo[]
 }
+
+export interface IFullVideo extends IVideo {
+	likes: []
+}
+
+export interface ISingleVideoResponse extends IFullVideo {
+	similarVideos: IVideo[]
+}

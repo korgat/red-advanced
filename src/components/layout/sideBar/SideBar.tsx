@@ -1,4 +1,5 @@
 import dynamic from 'next/dynamic'
+import { usePathname } from 'next/navigation'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -6,10 +7,16 @@ import { selectSidebarStatus } from '@/store/layout/layout.selectors'
 import { toggleSidebar } from '@/store/layout/layout.slice'
 
 import { IconMenu } from './iconMenu'
-import { ADDITIONAL_LIST_DATA, MAIN_LIST_DATA, SECONDARY_LIST_DATA } from './iconMenu/IconMenu.data'
+import {
+	ADDITIONAL_LIST_DATA,
+	MAIN_LIST_DATA,
+	SECONDARY_LIST_DATA,
+	STUDIO_LIST_DATA
+} from './iconMenu/IconMenu.data'
 import { SidebarHeader } from './sidebarHeader'
 import { SubscriptionMenu } from './subscriptionMenu'
 import { SUBSCRIPTION_LIST_DATA } from './subscriptionMenu/SubscriptionMenu.data'
+import { STUDIO } from '@/configs/studio.pages'
 import { cn } from '@/lib/utils'
 
 const DynamicLogoutButton = dynamic(() => import('./logout-button').then(mod => mod.LogoutButton), {
@@ -26,6 +33,7 @@ interface SideBarProps extends React.HTMLAttributes<HTMLElement> {}
 
 const SideBar = (props: SideBarProps) => {
 	const { className = '', ...rest } = props
+	const pathname = usePathname()
 	const dispatch = useDispatch()
 	const isSidebarOpen = useSelector(selectSidebarStatus)
 
@@ -52,20 +60,27 @@ const SideBar = (props: SideBarProps) => {
 				border
 			/>
 			<IconMenu
-				className='mb-0'
 				isSidebarOpen={isSidebarOpen}
 				items={SECONDARY_LIST_DATA}
 			/>
-			<DynamicChannelLink
-				className='mb-5'
-				isSidebarOpen={isSidebarOpen}
-			/>
+			<DynamicChannelLink isSidebarOpen={isSidebarOpen} />
 			<SubscriptionMenu
+				className='mt-5'
 				isSidebarOpen={isSidebarOpen}
 				items={SUBSCRIPTION_LIST_DATA}
 				title='Subscriptions'
 			/>
+			{pathname.includes(STUDIO.HOME) && (
+				<IconMenu
+					title='Studio'
+					isSidebarOpen={isSidebarOpen}
+					items={STUDIO_LIST_DATA}
+					border
+				/>
+			)}
+
 			<IconMenu
+				className='mb-0'
 				isSidebarOpen={isSidebarOpen}
 				items={ADDITIONAL_LIST_DATA}
 				title='More from youtube'

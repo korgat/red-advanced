@@ -1,3 +1,5 @@
+'use client'
+
 import { useMutation } from '@tanstack/react-query'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/navigation'
@@ -51,9 +53,5 @@ export default SubscriptionButton
 
 export const DynamicSubscriptionButton = dynamic(() => Promise.resolve(SubscriptionButton), {
 	ssr: false,
-	loading: () => (
-		<div className='grid grid-cols-6 gap-5 mt-4'>
-			<SkeletonLoader className='h-10 w-40 rounded-md' />
-		</div>
-	)
+	loading: () => <SkeletonLoader className='h-10 w-40 rounded-md' />
 })

@@ -20,6 +20,7 @@ const SidebarHeader = (props: SidebarHeaderProps) => {
 			<button
 				onClick={onBurgerClick}
 				className='opacity-80 hover:opacity-100'
+				title='Toggle sidebar'
 			>
 				<Menu />
 			</button>
