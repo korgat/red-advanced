@@ -5,26 +5,32 @@ import React from 'react'
 
 import { useOutside } from '@/hooks/useOutside'
 
-import { EnumVideoPlayerQuality } from '../videoPlayer.types'
-
 import { VIDEO_QUALITIES } from './qualitySelector.data'
 import { cn } from '@/lib/utils'
+import type { EnumVideoPlayerQuality } from '@/types/video.types'
 
 interface QualitySelectorProps extends React.HTMLAttributes<HTMLDivElement> {
 	currentQuality: EnumVideoPlayerQuality
 	setQuality: (quality: EnumVideoPlayerQuality) => void
+	maxResolution: EnumVideoPlayerQuality
 }
 
 const QualitySelector = (props: QualitySelectorProps) => {
-	const { className = '', currentQuality, setQuality, ...rest } = props
+	const { className = '', currentQuality, maxResolution, setQuality, ...rest } = props
 	const { isShow, ref, setIsShow } = useOutside<HTMLUListElement>(false)
-	console.log('render quality')
+	console.log(VIDEO_QUALITIES.indexOf(maxResolution))
+	const availableQualities = VIDEO_QUALITIES.slice(VIDEO_QUALITIES.indexOf(maxResolution))
 	return (
 		<div
 			{...rest}
 			className={cn('relative inline-block', {}, [className])}
 		>
-			<button onClick={() => setIsShow(prev => !prev)}>{currentQuality}</button>
+			<button
+				className='transition-colors hover:text-primary'
+				onClick={() => setIsShow(prev => !prev)}
+			>
+				{currentQuality}
+			</button>
 
 			<AnimatePresence>
 				{isShow && (
@@ -33,10 +39,13 @@ const QualitySelector = (props: QualitySelectorProps) => {
 						initial={{ opacity: 0, y: 10 }}
 						animate={{ opacity: 1, y: 0 }}
 						exit={{ opacity: 0, y: 10 }}
-						transition={{ duration: 0.3 }}
-						className='bg-white/10 py-2 px-4 rounded absolute bottom-full right-0 z-10 shadow'
+						transition={{
+							duration: 0.3,
+							damping: 0
+						}}
+						className='bg-gray-800 py-2 px-4 rounded absolute bottom-full left-0 z-10 shadow'
 					>
-						{VIDEO_QUALITIES.map(quality => (
+						{availableQualities.map(quality => (
 							<li
 								key={quality}
 								className='mb-1'

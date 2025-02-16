@@ -1,29 +1,63 @@
 'use client'
 
-import React, { type RefObject, useEffect, useState } from 'react'
+import Slider from 'rc-slider'
+import 'rc-slider/assets/index.css'
+import Tooltip from 'rc-tooltip'
+import React, { type ReactElement, type RefObject, useEffect, useState } from 'react'
 
 import type { HTMLCustomVideoElement } from '../videoPlayer.types'
-import { getVideoInfo } from '../videoPlayer.utils'
+import { transformVideoDuration } from '../videoPlayer.utils'
 
+import { useSkipTime } from './useSkipTime'
 import { cn } from '@/lib/utils'
 
+import styles from './progressbar.module.scss'
+
+interface IHandleProps {
+	value: number
+	dragging: boolean
+	index: number
+}
+
+const handleRender = (node: ReactElement, props: IHandleProps) => {
+	const { value, dragging, index } = props
+	return (
+		<Tooltip
+			prefixCls='rc-slider-tooltip'
+			classNames={{ root: 'tooltip-simple-text' }}
+			overlay={transformVideoDuration(value)}
+			visible={dragging}
+			placement='top'
+			key={index}
+		>
+			{node}
+		</Tooltip>
+	)
+}
+
 interface ProgressbarProps extends React.HTMLAttributes<HTMLDivElement> {
-	progress?: number
 	playerRef: RefObject<HTMLCustomVideoElement | null>
 }
 
 const Progressbar = (props: ProgressbarProps) => {
 	const { className = '', playerRef, ...rest } = props
-	const [progress, setProgress] = useState(0)
+	const [currentTime, setCurrentTime] = useState(0)
+	const [duration, setDuration] = useState(0)
+	useSkipTime(playerRef, { setCurrentTime })
+
+	const onSeek = (time: number) => {
+		if (!playerRef.current) return
+
+		playerRef.current.currentTime = time
+		setCurrentTime(time)
+	}
 
 	useEffect(() => {
 		const player = playerRef?.current
 
 		const updateProgress = () => {
 			if (!player) return
-
-			const { progress } = getVideoInfo(player)
-			setProgress(progress)
+			setDuration(player.duration)
 		}
 
 		player?.addEventListener('timeupdate', updateProgress)
@@ -36,14 +70,31 @@ const Progressbar = (props: ProgressbarProps) => {
 	return (
 		<div
 			{...rest}
-			className={cn('absolute -top-0.5 left-0 w-full bg-gray-200', {}, [className])}
+			className={cn('w-full', {}, [styles, className])}
 		>
-			<div
-				style={{
-					width: `${progress}%`
+			<Slider
+				min={0}
+				max={duration}
+				value={currentTime}
+				onChange={value => {
+					if (typeof value === 'number') {
+						onSeek(value)
+					}
 				}}
-				className='h-1 bg-primary relative'
-			></div>
+				handleRender={handleRender}
+				styles={{
+					track: { backgroundColor: 'var(--color-primary)', height: 5 },
+					rail: { backgroundColor: 'rgb(196 196 196 / 60%)', height: 5 },
+					handle: {
+						borderColor: 'transparent',
+						height: 16,
+						width: 16,
+						backgroundColor: 'transparent',
+						outline: 'none',
+						boxShadow: 'none'
+					}
+				}}
+			/>
 		</div>
 	)
 }

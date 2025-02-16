@@ -1,4 +1,4 @@
-import { EnumVideoPlayerQuality } from '../videoPlayer.types'
+import { EnumVideoPlayerQuality } from '@/types/video.types'
 
 export const VIDEO_QUALITIES: EnumVideoPlayerQuality[] = [
 	EnumVideoPlayerQuality['4K'],

@@ -1,0 +1,25 @@
+:global(.rc-slider-handle:focus),
+:global(.rc-slider-handle:active) {
+	outline: none;
+	box-shadow: none;
+}
+
+:global(.tooltip-simple-text.rc-slider-tooltip .rc-slider-tooltip-inner) {
+	@apply text-base;
+	background: none !important;
+	border: none !important;
+	box-shadow: none !important;
+	padding: 0 !important;
+	color: #fff !important;
+	height: 16px;
+}
+
+:global(.tooltip-simple-text.rc-slider-tooltip .rc-slider-tooltip-arrow) {
+	display: none !important;
+}
+
+:global(.tooltip-simple-text.rc-slider-tooltip) {
+	background: none !important;
+	border: none !important;
+	box-shadow: none !important;
+}
