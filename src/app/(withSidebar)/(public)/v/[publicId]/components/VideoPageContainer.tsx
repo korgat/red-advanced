@@ -23,7 +23,7 @@ const VideoPageContainer = (props: VideoPageContainerProps) => {
 	const toggleTheatreMode = () => {
 		setIsTheatreMode(prev => !prev)
 	}
-	console.log(video)
+
 	return (
 		<div
 			className={cn('grid grid-cols-[3fr_.8fr] gap-12', {

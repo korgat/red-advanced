@@ -51,9 +51,12 @@ const VideoPlayer = (props: VideoPlayerProps) => {
 						{state.isPlaying ? <Pause /> : <Play />}
 					</button>
 					<div className='mr-3'>
-						<span>{transformVideoDuration(state.videoTime)}</span>
+						<span>{transformVideoDuration(state.duration)}</span>
 					</div>
-					<Progressbar playerRef={playerRef} />
+					<Progressbar
+						playerRef={playerRef}
+						duration={state.duration}
+					/>
 				</div>
 				<div className='flex items-center gap-3'>
 					<QualitySelector

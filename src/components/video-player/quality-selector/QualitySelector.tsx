@@ -18,7 +18,7 @@ interface QualitySelectorProps extends React.HTMLAttributes<HTMLDivElement> {
 const QualitySelector = (props: QualitySelectorProps) => {
 	const { className = '', currentQuality, maxResolution, setQuality, ...rest } = props
 	const { isShow, ref, setIsShow } = useOutside<HTMLUListElement>(false)
-	console.log(VIDEO_QUALITIES.indexOf(maxResolution))
+
 	const availableQualities = VIDEO_QUALITIES.slice(VIDEO_QUALITIES.indexOf(maxResolution))
 	return (
 		<div

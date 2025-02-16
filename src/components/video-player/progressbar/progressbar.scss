@@ -1,10 +1,10 @@
-:global(.rc-slider-handle:focus),
-:global(.rc-slider-handle:active) {
+.rc-slider-handle:focus,
+.rc-slider-handle:active {
 	outline: none;
 	box-shadow: none;
 }
 
-:global(.tooltip-simple-text.rc-slider-tooltip .rc-slider-tooltip-inner) {
+.tooltip-simple-text.rc-slider-tooltip .rc-slider-tooltip-inner {
 	@apply text-base;
 	background: none !important;
 	border: none !important;
@@ -14,11 +14,11 @@
 	height: 16px;
 }
 
-:global(.tooltip-simple-text.rc-slider-tooltip .rc-slider-tooltip-arrow) {
+.tooltip-simple-text.rc-slider-tooltip .rc-slider-tooltip-arrow {
 	display: none !important;
 }
 
-:global(.tooltip-simple-text.rc-slider-tooltip) {
+.tooltip-simple-text.rc-slider-tooltip {
 	background: none !important;
 	border: none !important;
 	box-shadow: none !important;

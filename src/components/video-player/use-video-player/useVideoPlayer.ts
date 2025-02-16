@@ -16,13 +16,13 @@ export function useVideoPlayer({ fileName }: Props) {
 
 	const { isPlaying, setIsPlaying, togglePlayPause } = usePlayPause(playerRef)
 	const { quality, changeQuality } = useQuality({ fileName, playerRef, setIsPlaying })
-	const { videoTime } = useVideoTime(playerRef)
+	const { duration } = useVideoTime(playerRef)
 	const { toggleFullScreen } = useFullScreen(playerRef)
 
 	return {
 		state: {
 			isPlaying,
-			videoTime,
+			duration,
 			quality
 		},
 		fn: {

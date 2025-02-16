@@ -11,7 +11,7 @@ import { transformVideoDuration } from '../videoPlayer.utils'
 import { useSkipTime } from './useSkipTime'
 import { cn } from '@/lib/utils'
 
-import styles from './progressbar.module.scss'
+import './progressbar.scss'
 
 interface IHandleProps {
 	value: number
@@ -37,12 +37,12 @@ const handleRender = (node: ReactElement, props: IHandleProps) => {
 
 interface ProgressbarProps extends React.HTMLAttributes<HTMLDivElement> {
 	playerRef: RefObject<HTMLCustomVideoElement | null>
+	duration: number
 }
 
 const Progressbar = (props: ProgressbarProps) => {
-	const { className = '', playerRef, ...rest } = props
+	const { className = '', playerRef, duration, ...rest } = props
 	const [currentTime, setCurrentTime] = useState(0)
-	const [duration, setDuration] = useState(0)
 	useSkipTime(playerRef, { setCurrentTime })
 
 	const onSeek = (time: number) => {
@@ -57,7 +57,7 @@ const Progressbar = (props: ProgressbarProps) => {
 
 		const updateProgress = () => {
 			if (!player) return
-			setDuration(player.duration)
+			setCurrentTime(player.currentTime)
 		}
 
 		player?.addEventListener('timeupdate', updateProgress)
@@ -70,7 +70,7 @@ const Progressbar = (props: ProgressbarProps) => {
 	return (
 		<div
 			{...rest}
-			className={cn('w-full', {}, [styles, className])}
+			className={cn('w-full', {}, [className])}
 		>
 			<Slider
 				min={0}
