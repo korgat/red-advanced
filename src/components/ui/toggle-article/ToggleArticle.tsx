@@ -38,7 +38,7 @@ const ToggleArticle = (props: ToggleArticleProps) => {
 					[styles.article]
 				)}
 				style={{
-					height: expanded ? height : maxHeight,
+					maxHeight: expanded ? height : maxHeight,
 					visibility: height ? 'visible' : 'hidden',
 					overflow: 'hidden',
 					WebkitMaskImage:
@@ -56,7 +56,7 @@ const ToggleArticle = (props: ToggleArticleProps) => {
 			</article>
 			{height >= maxHeight + 30 && (
 				<Button
-					className='px-1 py-0 mt-2 text-white/80 hover:text-white'
+					className='px-1 py-0 text-white/80 hover:text-white'
 					onClick={() => setExpanded(prev => !prev)}
 				>
 					{expanded ? 'Hide' : 'Show'}
