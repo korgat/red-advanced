@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react'
 
+import { Comments } from '@/components/comments'
 import VideoPlayer from '@/components/video-player/VideoPlayer'
 
 import { ToggleArticle } from '@/ui/toggle-article'
@@ -30,7 +31,7 @@ const VideoPageContainer = (props: VideoPageContainerProps) => {
 				'relative pt-[58%]': isTheatreMode
 			})}
 		>
-			<div className=''>
+			<div>
 				<VideoPlayer
 					className={cn('mb-5', {
 						'absolute top-0 left-0 z-10': isTheatreMode
@@ -54,7 +55,17 @@ const VideoPageContainer = (props: VideoPageContainerProps) => {
 					subscribersCount={video.channel.subscribers.length}
 				/>
 
-				<ToggleArticle content={video.description} />
+				<ToggleArticle
+					className='mb-4 text-gray-300'
+					content={video.description}
+				/>
+
+				<Comments
+					className='pt-8 border-t border-border'
+					videoId={video.publicId}
+					comments={video.comments}
+					slug={video.channel.slug}
+				/>
 			</div>
 
 			<div className='grid grid-cols-1 gap-10'>

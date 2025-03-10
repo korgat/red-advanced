@@ -1,5 +1,5 @@
 .article {
-	@apply text-gray-200 text-[0.91rem] text-ellipsis overflow-hidden leading-snug bg-gray-800 py-1 px-3 rounded;
+	@apply text-gray-200 text-[0.91rem] bg-gray-800 py-1 px-3 rounded;
 
 	> p {
 		@apply py-1;
