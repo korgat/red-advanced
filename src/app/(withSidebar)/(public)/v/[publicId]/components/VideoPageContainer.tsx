@@ -20,7 +20,7 @@ interface VideoPageContainerProps extends React.HTMLAttributes<HTMLDivElement> {
 const VideoPageContainer = (props: VideoPageContainerProps) => {
 	const { video } = props
 	const [isTheatreMode, setIsTheatreMode] = useState(false)
-	console.log(video)
+
 	const toggleTheatreMode = () => {
 		setIsTheatreMode(prev => !prev)
 	}

@@ -13,7 +13,7 @@ interface CommentInputProps extends React.HTMLAttributes<HTMLFormElement> {
 
 const CommentInput = (props: CommentInputProps) => {
 	const { className = '', videoId, publicId, ...rest } = props
-	console.log(videoId)
+
 	const { errors, isLoading, onSubmit, register } = useCommentsForm(videoId, publicId)
 
 	return (
