@@ -1,30 +1,53 @@
+'use client'
+
+import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 import Heading from '@/ui/heading/Heading'
 
+import CommentActions from './CommentActions'
 import { PUBLIC } from '@/configs/public.pages'
 import { getInitials } from '@/lib/getInitials'
 import { transformDate } from '@/lib/transform-date'
 import { cn } from '@/lib/utils'
 import type { IComment } from '@/types/comments.types'
+import type { IUser } from '@/types/user.types'
 
 interface CommentItemProps extends React.HTMLAttributes<HTMLLIElement> {
 	comment: IComment
 	slug: string
+	publicId: string
+	user: IUser | null
 }
 
 const CommentItem = (props: CommentItemProps) => {
-	const { className = '', comment, slug, ...rest } = props
+	const { className = '', comment, slug, user, publicId, ...rest } = props
+	const isUserComment = user?.id === comment.user.id
+	const [text, setText] = useState(comment.text)
+	const textareaRef = useRef<HTMLTextAreaElement>(null)
+
+	useEffect(() => {
+		if (textareaRef.current) {
+			textareaRef.current.style.height = 'auto'
+			textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`
+		}
+	}, [text])
 
 	return (
 		<li
 			{...rest}
-			className={cn('', {}, [className])}
+			className={cn(
+				'pb-5 mb-6 border-b border-border-muted last:border-none',
+				{
+					'pb-6': isUserComment
+				},
+				[className]
+			)}
 		>
 			<div className='flex justify-between items-start'>
-				<div className='flex gap-4'>
+				<div className='flex gap-4 w-full'>
 					<Link href={PUBLIC.CHANNEL(slug)}>
 						{comment.user.channel?.avatarUrl ? (
 							<Image
@@ -40,7 +63,7 @@ const CommentItem = (props: CommentItemProps) => {
 							</div>
 						)}
 					</Link>
-					<div>
+					<div className='w-full'>
 						<Heading
 							className='mb-2 text-lg leading-5 mb'
 							tag='h2'
@@ -50,11 +73,20 @@ const CommentItem = (props: CommentItemProps) => {
 								<div className='text-xs text-gray-400'>{transformDate(comment.createdAt)}</div>
 							</div>
 						</Heading>
-						<p className='text-sm text-gray-300 mb-3.5'>{comment.text}</p>
-						<div className='flex items-center gap-4'>
-							<button className='text-white/80 hover:text-white text-sm '>Edit</button>
-							<button className='text-white/80 hover:text-primary text-sm '>Delete</button>
-						</div>
+						<textarea
+							ref={textareaRef}
+							rows={1}
+							className='bg-transparent outline-none border-transparent resize-none w-full  block'
+							value={text}
+							onChange={e => setText(e.target.value)}
+						></textarea>
+						{isUserComment && (
+							<CommentActions
+								commentText={text}
+								comment={comment}
+								publicId={publicId}
+							/>
+						)}
 					</div>
 				</div>
 			</div>
@@ -63,3 +95,7 @@ const CommentItem = (props: CommentItemProps) => {
 }
 
 export default CommentItem
+
+export const DynamicComments = dynamic(() => Promise.resolve(CommentItem), {
+	ssr: false
+})

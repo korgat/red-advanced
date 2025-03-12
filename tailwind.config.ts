@@ -8,6 +8,9 @@ export default {
 				'opened-sidebar': 'var(--sidebar-width)',
 				'closed-sidebar': 'var(--sidebar-width-closed)'
 			},
+			borderColor: {
+				DEFAULT: 'var(--default-color-border)'
+			},
 			colors: {
 				primary: 'var(--color-primary)',
 				background: 'var(--color-background)',

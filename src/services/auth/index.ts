@@ -21,8 +21,8 @@ class AuthService {
 	}
 
 	async initializeAuth() {
-		const accessToken = Cookies.get(ETokens.ACCESS_TOKEN)
-		if (accessToken) return
+		const isInitialUser = store.getState().auth.user
+		if (isInitialUser) return
 
 		try {
 			await this.getNewTokens()

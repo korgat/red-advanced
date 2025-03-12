@@ -18,7 +18,7 @@ const Field = (props: FieldProps) => {
 				<span className='block text-gray-400 font-semibold mb-2'>{label}</span>
 				<input
 					className={cn(
-						'w-full px-3 py-2 border rounded shadow-sm transition-colors focus:outline-none focus:ring-0 focus:border-gray-500 bg-transparent',
+						'w-full px-3 py-2 border rounded shadow-sm transition-colors focus:outline-none focus:ring-0 focus:border-white bg-transparent',
 						{
 							'border-red-500 border-border': errorMessage
 						}

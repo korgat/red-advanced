@@ -20,7 +20,7 @@ interface VideoPageContainerProps extends React.HTMLAttributes<HTMLDivElement> {
 const VideoPageContainer = (props: VideoPageContainerProps) => {
 	const { video } = props
 	const [isTheatreMode, setIsTheatreMode] = useState(false)
-
+	console.log(video)
 	const toggleTheatreMode = () => {
 		setIsTheatreMode(prev => !prev)
 	}
@@ -62,7 +62,8 @@ const VideoPageContainer = (props: VideoPageContainerProps) => {
 
 				<Comments
 					className='pt-8 border-t border-border'
-					videoId={video.publicId}
+					videoId={video.id}
+					publicId={video.publicId}
 					comments={video.comments}
 					slug={video.channel.slug}
 				/>
