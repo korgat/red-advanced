@@ -1,13 +1,14 @@
 'use client'
 
 import { useMutation } from '@tanstack/react-query'
-import { Heart, ListPlus } from 'lucide-react'
+import { Heart } from 'lucide-react'
 import React, { startTransition, useOptimistic, useState } from 'react'
 
 import Heading from '@/ui/heading/Heading'
 
 import { useProfile } from '@/hooks/useProfile'
 
+import TogglePlaylist from './TogglePlaylist'
 import { cn } from '@/lib/utils'
 import { profileService } from '@/services/profile'
 
@@ -16,10 +17,11 @@ interface HeaderSectionProps extends React.HTMLAttributes<HTMLDivElement> {
 	viewsCount: string
 	likesCount: number
 	videoId: string
+	videoPublicId: string
 }
 
 const HeaderSection = (props: HeaderSectionProps) => {
-	const { className = '', title, viewsCount, likesCount, videoId, ...rest } = props
+	const { className = '', title, viewsCount, likesCount, videoId, videoPublicId, ...rest } = props
 	const { data, refetch } = useProfile()
 	const [likes, setLikes] = useState(likesCount)
 	const [optimisticLikes, setOptimisticLikes] = useOptimistic(likes)
@@ -57,10 +59,10 @@ const HeaderSection = (props: HeaderSectionProps) => {
 				<div className='text-sm text-gray-400'>{viewsCount} views</div>
 			</div>
 			<div className='flex gap-7 self-start'>
-				<button className='flex gap-2 items-center opacity-80 hover:opacity-100 transition-opacity'>
-					<ListPlus size={20} />
-					<span className='leading-5'>Save</span>
-				</button>
+				<TogglePlaylist
+					videoPublicId={videoPublicId}
+					videoId={videoId}
+				/>
 				<button
 					className='flex gap-2 text-primary items-center opacity-80 hover:opacity-100 transition-opacity'
 					onClick={likeClickHandler}

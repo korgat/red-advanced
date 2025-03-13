@@ -27,30 +27,6 @@ const ExploreSection = (props: ExploreSectionProps) => {
 			isLoading={isLoading}
 		/>
 	)
-
-	// return (
-	// 	<section
-	// 		{...rest}
-	// 		className={cn('', {}, [className])}
-	// 	>
-	// 		<Heading icon={Compass}>Explore</Heading>
-	// 		<div className='grid grid-cols-6 gap-5'>
-	// 			{isLoading ? (
-	// 				<SkeletonLoader
-	// 					className='h-44'
-	// 					count={6}
-	// 				/>
-	// 			) : (
-	// 				data?.data.videos.map(video => (
-	// 					<VideoCard
-	// 						key={video.id}
-	// 						item={video}
-	// 					/>
-	// 				))
-	// 			)}
-	// 		</div>
-	// 	</section>
-	// )
 }
 
 export default ExploreSection

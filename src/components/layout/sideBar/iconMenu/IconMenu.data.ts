@@ -7,6 +7,7 @@ import {
 	Info,
 	Joystick,
 	LayoutGridIcon,
+	ListVideo,
 	Settings,
 	UploadIcon
 } from 'lucide-react'
@@ -48,6 +49,11 @@ export const SECONDARY_LIST_DATA: IIconMenuItem[] = [
 		icon: FolderHeart,
 		name: 'Liked videos',
 		link: PUBLIC.LIKED_VIDEOS
+	},
+	{
+		icon: ListVideo,
+		name: 'Playlists',
+		link: PUBLIC.PLAYLISTS
 	}
 ]
 

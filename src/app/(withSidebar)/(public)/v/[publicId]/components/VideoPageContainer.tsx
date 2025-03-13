@@ -9,7 +9,7 @@ import { ToggleArticle } from '@/ui/toggle-article'
 import VideoCard from '@/ui/video-card/VideoCard'
 
 import ChannelInfoSection from './ChannelInfoSection'
-import HeaderSection from './HeaderSection'
+import { HeaderSection } from './HeaderSection'
 import { useVideoView } from './useVideoView'
 import { cn } from '@/lib/utils'
 import type { ISingleVideoResponse } from '@/types/video.types'
@@ -48,6 +48,7 @@ const VideoPageContainer = (props: VideoPageContainerProps) => {
 					viewsCount={video.viewsCount.toLocaleString('en-us')}
 					likesCount={video.likes.length}
 					videoId={video.id}
+					videoPublicId={video.publicId}
 				/>
 
 				<ChannelInfoSection
