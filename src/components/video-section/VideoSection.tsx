@@ -5,6 +5,7 @@ import Heading from '@/ui/heading/Heading'
 import SkeletonLoader from '@/ui/skeleton-loader/SkeletonLoader'
 
 import VideoBlock from './video-block/VideoBlock'
+import VideoList from './video-list/VideoList'
 import { cn } from '@/lib/utils'
 import type { IVideo } from '@/types/video.types'
 
@@ -16,10 +17,12 @@ interface VideoSectionProps extends React.HTMLAttributes<HTMLDivElement> {
 	}
 	isLoading?: boolean
 	videos?: IVideo[]
+	isList?: boolean
 }
 
 const VideoSection = (props: VideoSectionProps) => {
-	const { className = '', heading, isLoading, videos, ...rest } = props
+	const { className = '', heading, isLoading, videos, isList = false, ...rest } = props
+	const videoContent = isList ? <VideoList videos={videos} /> : <VideoBlock videos={videos} />
 
 	return (
 		<section
@@ -35,14 +38,20 @@ const VideoSection = (props: VideoSectionProps) => {
 			</Heading>
 
 			{isLoading && (
-				<div className='grid grid-cols-6 gap-5 mt-4'>
+				<div
+					className={cn('grid grid-cols-6 gap-5 mt-4', {
+						'grid-cols-1 gap-3': isList
+					})}
+				>
 					<SkeletonLoader
-						className='h-44'
-						count={6}
+						className={cn('h-44 rounded-lg', {
+							'h-32 ': isList
+						})}
+						count={isList ? 3 : 6}
 					/>
 				</div>
 			)}
-			{!isLoading && <VideoBlock videos={videos} />}
+			{!isLoading && videoContent}
 		</section>
 	)
 }

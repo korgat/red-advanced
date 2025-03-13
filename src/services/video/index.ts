@@ -25,6 +25,10 @@ class VideoService {
 	getVideoGames() {
 		return axiosCommon.get<IVideosPagination>(`${this.path}/games`)
 	}
+
+	updateViews(publicId: string) {
+		return axiosCommon.put(`${this.path}/update-views-count/${publicId}`)
+	}
 }
 
 export const videoService = new VideoService()

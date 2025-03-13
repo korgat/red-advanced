@@ -10,6 +10,7 @@ import VideoCard from '@/ui/video-card/VideoCard'
 
 import ChannelInfoSection from './ChannelInfoSection'
 import HeaderSection from './HeaderSection'
+import { useVideoView } from './useVideoView'
 import { cn } from '@/lib/utils'
 import type { ISingleVideoResponse } from '@/types/video.types'
 
@@ -20,6 +21,7 @@ interface VideoPageContainerProps extends React.HTMLAttributes<HTMLDivElement> {
 const VideoPageContainer = (props: VideoPageContainerProps) => {
 	const { video } = props
 	const [isTheatreMode, setIsTheatreMode] = useState(false)
+	useVideoView(video.id, video.publicId)
 
 	const toggleTheatreMode = () => {
 		setIsTheatreMode(prev => !prev)

@@ -19,6 +19,7 @@ export interface IVideoLike {
 	id: string
 	videoId: string
 	userId: string
+	video: IVideo
 }
 
 export interface IProfileResponse extends IFullUser {

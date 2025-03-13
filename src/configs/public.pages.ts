@@ -7,8 +7,8 @@ class PublicPage {
 
 	MY_CHANNEL = '/my-channel'
 	SUBSCRIPTIONS = '/my/subscriptions'
-	HISTORY = '/history'
-	LIKED_VIDEOS = '/liked-videos'
+	HISTORY = '/my/history'
+	LIKED_VIDEOS = '/my/liked-videos'
 
 	SETTINGS = '/settings'
 	FEEDBACK = '/feedback'
