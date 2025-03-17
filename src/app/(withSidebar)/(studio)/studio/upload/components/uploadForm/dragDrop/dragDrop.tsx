@@ -1,31 +1,30 @@
 import React from 'react'
-import type { UseFormReset } from 'react-hook-form'
+import type { UseFormReturn } from 'react-hook-form'
+
+import type { TVideoForm } from '@/components/form/video-form/videoForm.types'
 
 import { useUploadField } from '@/ui/field/upload-field/useUploadField'
-
-import type { TUploadForm } from '../uploadForm.types'
 
 import DragDropText from './dragDropText'
 import { useDragDrop } from './useDargDrop'
 import { cn } from '@/lib/utils'
 
 interface DragDropFieldProps extends React.HTMLAttributes<HTMLDivElement> {
-	reset: UseFormReset<TUploadForm>
+	form: UseFormReturn<TVideoForm, object, undefined>
 	setIsVideoProcessed: React.Dispatch<React.SetStateAction<boolean>>
-	fileName: string
 	isVideoProcessed: boolean
 }
 
 const DragDropField = (props: DragDropFieldProps) => {
-	const { className = '', reset, fileName, isVideoProcessed, setIsVideoProcessed, ...rest } = props
-
+	const { className = '', form, isVideoProcessed, setIsVideoProcessed, ...rest } = props
+	const fileName = form.watch('videoFileName')
 	const { isLoading, isSuccess, uploadFile } = useUploadField({
 		folder: 'videos',
 		onSuccess: async ({ data }) => {
 			const file = data[0]
 			if (!file) return
 
-			reset({
+			form.reset({
 				videoFileName: file.name,
 				maxResolution: file.maxResolution,
 				title: file.name

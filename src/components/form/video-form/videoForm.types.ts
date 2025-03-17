@@ -1,6 +1,6 @@
 import type { EnumVideoPlayerQuality } from '@/types/video.types'
 
-export type TUploadForm = {
+export type TVideoForm = {
 	title: string
 	description: string
 	videoFileName: string

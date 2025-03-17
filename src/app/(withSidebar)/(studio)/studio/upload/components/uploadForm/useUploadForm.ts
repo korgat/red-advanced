@@ -2,31 +2,23 @@ import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 
-import type { TUploadForm } from './uploadForm.types'
+import type { TVideoForm } from '@/components/form/video-form/videoForm.types'
+
 import { STUDIO } from '@/configs/studio.pages'
 import { studioVideoService } from '@/services/studio-video'
 
 export const useUploadForm = () => {
 	const router = useRouter()
 	const queryClient = useQueryClient()
-	const {
-		formState: { errors },
-		watch,
-		reset,
-		register,
-		handleSubmit,
-		control
-	} = useForm<TUploadForm>({
+	const form = useForm<TVideoForm>({
 		mode: 'onChange'
 	})
-	const fileName = watch('videoFileName')
-	const thumbnail = watch('thumbnailUrl')
 
 	const { mutate, isPending } = useMutation({
 		mutationKey: ['publish-video'],
-		mutationFn: (data: TUploadForm) => studioVideoService.create(data),
+		mutationFn: (data: TVideoForm) => studioVideoService.create(data),
 		async onSuccess() {
-			reset()
+			form.reset()
 			const { toast } = await import('react-hot-toast')
 			toast.success('Video successfully published!')
 			queryClient.removeQueries({ queryKey: ['video-progress'] })
@@ -38,17 +30,12 @@ export const useUploadForm = () => {
 		}
 	})
 
-	const onSubmit = handleSubmit((data: TUploadForm) => {
+	const onSubmit = form.handleSubmit((data: TVideoForm) => {
 		mutate(data)
 	})
 	return {
-		fileName,
-		thumbnail,
-		control,
-		errors,
+		form,
 		isPublishing: isPending,
-		reset,
-		register,
 		onSubmit
 	}
 }

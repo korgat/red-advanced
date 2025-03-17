@@ -4,7 +4,7 @@ import StudioSection from './components/StudioSection'
 import { NO_INDEX_PAGE } from '@/const/seo.const'
 
 export const metadata: Metadata = {
-	title: 'Search',
+	title: 'Studio',
 	...NO_INDEX_PAGE
 }
 

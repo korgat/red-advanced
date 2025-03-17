@@ -1,6 +1,7 @@
+import type { TVideoForm } from '@/components/form/video-form/videoForm.types'
+
 import { axiosAuth } from '@/api/axios'
 
-import type { TUploadForm } from '@/app/(withSidebar)/(studio)/studio/upload/components/uploadForm/uploadForm.types'
 import type { IPaginationParams } from '@/types/pagination.types'
 import type { IFullVideo, IStudioVideoResponse, IVideosPagination } from '@/types/video.types'
 
@@ -17,11 +18,11 @@ class StudioVideoService {
 		return axiosAuth.get<IStudioVideoResponse>(`${this.path}/${id}`)
 	}
 
-	create(dto: TUploadForm) {
+	create(dto: TVideoForm) {
 		return axiosAuth.post(this.path, dto)
 	}
 
-	update(id: string, dto: TUploadForm) {
+	update(id: string, dto: TVideoForm) {
 		return axiosAuth.put(`${this.path}/${id}`, dto)
 	}
 
