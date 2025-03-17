@@ -29,11 +29,12 @@ const VideoCard = (props: VideoCardProps) => {
 				damping: 40
 			}}
 			style={style}
-			className={cn('', {}, [className])}
+			className={cn('flex flex-col', {}, [className])}
 		>
 			<div className='relative rounded-md overflow-hidden mb-1.5'>
 				<Link href={PUBLIC.VIDEO(item.publicId)}>
 					<Image
+						className='aspect-video'
 						src={item.thumbnailUrl}
 						width={400}
 						height={225}
@@ -52,7 +53,7 @@ const VideoCard = (props: VideoCardProps) => {
 					/>
 				</Link>
 			</div>
-			<div>
+			<div className='flex-grow flex flex-col'>
 				<div className='flex items-top text-gray-500 mb-1.5'>
 					{Icon && (
 						<Icon
@@ -63,7 +64,7 @@ const VideoCard = (props: VideoCardProps) => {
 					<span className='mr-auto text-sm'>{formatCount(item.viewsCount)} views</span>
 					<span className='text-xs'>{transformDate(item.createdAt)}</span>
 				</div>
-				<article className='line-clamp-2 mb-2'>{parse(item.description)}</article>
+				<article className='line-clamp-2 mb-2 flex-grow'>{parse(item.description)}</article>
 				<div className='flex items-center gap-3'>
 					<Link href={PUBLIC.CHANNEL(item.channel.slug)}>
 						<span className='text-gray-500 text-xs'>{item.channel.user.name}</span>

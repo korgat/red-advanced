@@ -48,7 +48,7 @@ export default async function ChannelPage({ params }: IChanelPageProps) {
 	const data = await channelService.getChannel(slug)
 
 	return (
-		<div>
+		<div className='p-layout h-full'>
 			<HeaderSection channel={data.data} />
 			<VideoSection
 				heading={{ text: 'Videos', icon: Video }}

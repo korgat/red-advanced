@@ -8,10 +8,11 @@ interface Props {
 	fileName: string
 	playerRef: RefObject<HTMLCustomVideoElement | null>
 	setIsPlaying: Dispatch<SetStateAction<boolean>>
+	maxResolution: EnumVideoPlayerQuality
 }
 
-export const useQuality = ({ playerRef, fileName, setIsPlaying }: Props) => {
-	const [quality, setQuality] = useState(defaultVideoQuality)
+export const useQuality = ({ playerRef, fileName, maxResolution, setIsPlaying }: Props) => {
+	const [quality, setQuality] = useState(maxResolution || defaultVideoQuality)
 
 	const changeQuality = (quality: EnumVideoPlayerQuality) => {
 		if (!playerRef.current) return

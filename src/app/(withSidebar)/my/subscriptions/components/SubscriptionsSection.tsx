@@ -18,7 +18,7 @@ const SubscriptionsSection = (props: SubscriptionsSectionProps) => {
 	return (
 		<VideoSection
 			{...rest}
-			className={cn('', {}, [className])}
+			className={cn('p-layout h-full', {}, [className])}
 			heading={{ tag: 'h1', text: 'Subscriptions', icon: Heart }}
 			isLoading={isPending}
 			videos={data?.data.subscribedVideos}

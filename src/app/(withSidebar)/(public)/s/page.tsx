@@ -9,5 +9,5 @@ export const metadata: Metadata = {
 }
 
 export default function SearchPage() {
-	return <DynamicSearchSection className='h-full' />
+	return <DynamicSearchSection />
 }

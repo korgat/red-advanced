@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 
-import ExploreSection from './components/ExploreSection'
+import { DynamicExploreSection } from './components/ExploreSection'
 import TrendingSection from './components/TrendingSection'
 
 export const metadata: Metadata = {
@@ -21,9 +21,9 @@ export const dynamic = 'force-static'
 
 export default function HomePage() {
 	return (
-		<div className='flex flex-col gap-4'>
+		<div className='flex flex-col gap-4 p-layout h-full'>
 			<TrendingSection />
-			<ExploreSection />
+			<DynamicExploreSection />
 		</div>
 	)
 }

@@ -1,18 +1,21 @@
+import type { AxiosResponse } from 'axios'
 import { CloudDownload } from 'lucide-react'
+import type { ChangeEvent } from 'react'
 
 import ImagePreview from './ImagePreview'
 import { useUploadField } from './useUploadField'
 import { cn } from '@/lib/utils'
+import type { UploadResponseItem } from '@/types/file.types'
 
 interface UploadFieldProps {
 	className?: string
 	label: string
 	errorMessage?: string
 	folder: string
-	onChange: (url: string) => void
+	onSuccess?: (data: AxiosResponse<UploadResponseItem[]>) => void
 	value: string
 	isImage?: boolean
-	aspectRatio?: '16:9' | '1:1'
+	previewSizes?: [number, number]
 	overlay?: string
 }
 
@@ -23,18 +26,25 @@ const UploadField = (props: UploadFieldProps) => {
 		value,
 		folder,
 		errorMessage,
-		aspectRatio = '1:1',
+		previewSizes = [100, 100],
 		isImage = true,
 		overlay,
-		onChange
+		onSuccess
 	} = props
-	const { isLoading, uploadFile } = useUploadField(onChange, folder)
+	const { isLoading, uploadFile } = useUploadField({ folder, onSuccess })
+
+	const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+		const files = e.target.files
+		if (!files?.length) return
+
+		uploadFile(files[0])
+	}
 
 	return (
 		<div className={cn('mb-4', {}, [className])}>
 			<label>
 				<span className='block text-gray-400 font-semibold mb-2'>{label}</span>
-				<span className='py-2 px-10 flex items-center gap-4 text-gray-400 hover:text-white border border-white rounded transition cursor-pointer w-max'>
+				<span className='py-2 px-10 flex items-center gap-4 text-gray-400 hover:text-white border rounded transition cursor-pointer w-max hover:border-white'>
 					<CloudDownload />
 					Upload
 				</span>
@@ -42,7 +52,7 @@ const UploadField = (props: UploadFieldProps) => {
 					type='file'
 					accept='image/*'
 					className='hidden'
-					onChange={uploadFile}
+					onChange={changeHandler}
 				/>
 			</label>
 			{errorMessage && <p className='text-red-500 text-sm mt-1'>{errorMessage}</p>}
@@ -50,7 +60,7 @@ const UploadField = (props: UploadFieldProps) => {
 			{isImage && (
 				<ImagePreview
 					isLoading={isLoading}
-					aspectRatio={aspectRatio}
+					previewSizes={previewSizes}
 					overlay={overlay}
 					value={value}
 				/>

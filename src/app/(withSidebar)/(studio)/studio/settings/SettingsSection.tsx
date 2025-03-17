@@ -14,7 +14,7 @@ const SettingsSection = (props: SettingsSectionProps) => {
 	return (
 		<div
 			{...rest}
-			className={cn('', {}, [className])}
+			className={cn('p-layout h-full', {}, [className])}
 		>
 			<Heading
 				className='text-3xl gap-3'

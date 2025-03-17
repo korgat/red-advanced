@@ -29,7 +29,7 @@ const VideoPageContainer = (props: VideoPageContainerProps) => {
 
 	return (
 		<div
-			className={cn('grid grid-cols-[3fr_.8fr] gap-12', {
+			className={cn('grid grid-cols-[3fr_.8fr] gap-12 p-layout h-full', {
 				'relative pt-[58%]': isTheatreMode
 			})}
 		>

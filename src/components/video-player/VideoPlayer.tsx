@@ -7,7 +7,6 @@ import { useHotkeys } from 'react-hotkeys-hook'
 import Progressbar from './progressbar/Progressbar'
 import { QualitySelector } from './quality-selector'
 import { useVideoPlayer } from './use-video-player/useVideoPlayer'
-import { defaultVideoQuality } from './videoPlayer.types'
 import { transformVideoDuration } from './videoPlayer.utils'
 import { VolumeControl } from './volume-control'
 import { cn } from '@/lib/utils'
@@ -21,7 +20,7 @@ interface VideoPlayerProps extends React.HTMLAttributes<HTMLDivElement> {
 
 const VideoPlayer = (props: VideoPlayerProps) => {
 	const { className = '', fileName, maxResolution, toggleTheatreMode, ...rest } = props
-	const { fn, playerRef, state } = useVideoPlayer({ fileName })
+	const { fn, playerRef, state } = useVideoPlayer({ fileName, maxResolution })
 
 	useHotkeys('c', e => {
 		e.preventDefault()
@@ -37,7 +36,7 @@ const VideoPlayer = (props: VideoPlayerProps) => {
 				ref={playerRef}
 				className='w-full h-full aspect-video'
 				controls={false}
-				src={`/uploads/videos/${defaultVideoQuality}/${fileName}`}
+				src={`/uploads/videos/${maxResolution}/${fileName}`}
 				preload='metadata'
 				onClick={() => fn.togglePlayPause()}
 			/>

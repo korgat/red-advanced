@@ -6,7 +6,7 @@ import { PUBLIC } from '@/configs/public.pages'
 
 export default function verifiedPage() {
 	return (
-		<div className='flex items-center justify-center h-full'>
+		<div className='flex items-center justify-center p-layout h-full'>
 			<div className='text-center'>
 				<p className='text-4xl font-medium flex items-center gap-4 text-gray-400 mb-4'>
 					<Check

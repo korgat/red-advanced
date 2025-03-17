@@ -15,7 +15,7 @@ const AuthSection = (props: AuthSectionProps) => {
 	return (
 		<div
 			{...rest}
-			className={cn('h-screen flex items-center justify-center', {}, [className])}
+			className={cn('h-screen flex items-center justify-center p-layout', {}, [className])}
 		>
 			<div className='w-80 flex flex-col items-center'>
 				<Logo className='mb-6' />

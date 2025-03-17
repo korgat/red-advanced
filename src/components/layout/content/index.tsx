@@ -11,10 +11,10 @@ const Content = (props: ContentProps) => {
 	return (
 		<div
 			{...rest}
-			className={cn('flex flex-col flex-grow flex-shrink basis-0', {}, [className])}
+			className={cn('relative flex flex-col flex-grow flex-shrink basis-0', {}, [className])}
 		>
 			<Header />
-			<div className='p-layout h-full'>{children}</div>
+			{children}
 		</div>
 	)
 }

@@ -23,7 +23,7 @@ const HistorySection = (props: HistorySectionProps) => {
 	return (
 		<VideoSection
 			{...rest}
-			className={cn('max-w-[800px]', {}, [className])}
+			className={cn('max-w-[800px] p-layout h-full', {}, [className])}
 			heading={{ tag: 'h1', text: 'History', icon: History }}
 			isLoading={isPending}
 			videos={data?.data.map(item => item.video)}

@@ -26,7 +26,7 @@ const SearchSection = (props: SearchSectionProps) => {
 	return (
 		<VideoSection
 			{...rest}
-			className={cn('', {}, [className])}
+			className={cn('p-layout h-full', {}, [className])}
 			heading={{ tag: 'h1', text: `Search '${term}'` }}
 			isLoading={isLoading}
 			videos={data?.data.videos}

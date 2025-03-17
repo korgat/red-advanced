@@ -14,7 +14,7 @@ const VideoGamesSection = async (props: VideoGamesSectionProps) => {
 	return (
 		<VideoSection
 			{...rest}
-			className={cn('', {}, [className])}
+			className={cn('p-layout h-full', {}, [className])}
 			heading={{ text: 'Video games' }}
 			videos={data.videos}
 		/>

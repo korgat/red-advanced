@@ -9,14 +9,12 @@ interface ImagePreviewProps extends React.HTMLAttributes<HTMLDivElement> {
 	isLoading: boolean
 	value?: string
 	overlay?: string
-	aspectRatio?: '16:9' | '1:1'
+	previewSizes: [number, number]
 }
 
 const ImagePreview = (props: ImagePreviewProps) => {
-	const { className = '', value, isLoading, overlay, aspectRatio, ...rest } = props
-	const isWidescreenRation = aspectRatio === '16:9'
-	const width = isWidescreenRation ? 446 : 100
-	const height = isWidescreenRation ? 250 : 100
+	const { className = '', value, isLoading, overlay, previewSizes, ...rest } = props
+	const [width, height] = previewSizes
 
 	return (
 		<div

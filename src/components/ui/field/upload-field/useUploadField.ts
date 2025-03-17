@@ -1,33 +1,37 @@
 import { useMutation } from '@tanstack/react-query'
-import { type ChangeEvent, useCallback } from 'react'
+import type { AxiosResponse } from 'axios'
+import { useCallback } from 'react'
 import toast from 'react-hot-toast'
 
 import { fileService } from '@/services/file'
+import type { UploadResponseItem } from '@/types/file.types'
 
-export function useUploadField(onChange: (url: string) => void, folder: string) {
-	const { mutate, isPending } = useMutation({
+interface props {
+	folder: string
+	onSuccess?: (data: AxiosResponse<UploadResponseItem[]>) => void
+	onError?: (error: Error) => void
+}
+
+export function useUploadField({ folder, onSuccess, onError }: props) {
+	const { mutate, isPending, isSuccess } = useMutation({
 		mutationKey: ['upload-file'],
 		mutationFn: (data: FormData) => fileService.upload(data, folder),
-		onSuccess: ({ data }) => {
-			onChange(data[0].url)
-		},
-		onError: error => {
-			toast.error(error.message)
-		}
+		onSuccess: onSuccess,
+		onError: onError
+			? onError
+			: error => {
+					toast.error(error.message)
+				}
 	})
 
 	const uploadFile = useCallback(
-		(e: ChangeEvent<HTMLInputElement>) => {
-			const files = e.target.files
-			if (!files?.length) return
-
+		(file: File) => {
 			const formData = new FormData()
-			formData.append('file', files[0])
-
+			formData.append('file', file)
 			mutate(formData)
 		},
 		[mutate]
 	)
 
-	return { uploadFile, isLoading: isPending }
+	return { uploadFile, isLoading: isPending, isSuccess }
 }

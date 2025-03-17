@@ -15,7 +15,7 @@ const TrendingSection = async (props: TrendingSectionProps) => {
 	return (
 		<VideoSection
 			{...rest}
-			className={cn('h-full', {}, [className])}
+			className={cn('p-layout h-full', {}, [className])}
 			heading={{ text: 'Trending', icon: Flame }}
 			videos={data}
 		/>

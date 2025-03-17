@@ -19,6 +19,9 @@ export default {
 			padding: {
 				layout: '1.2rem'
 			},
+			margin: {
+				layout: '1.2rem'
+			},
 			transitionTimingFunction: {
 				DEFAULT: 'ease-in-out'
 			},

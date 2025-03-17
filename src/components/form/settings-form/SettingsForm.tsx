@@ -70,7 +70,7 @@ const SettingsForm = (props: SettingsFormProps) => {
 									label='Avatar'
 									folder='avatars'
 									value={field.value}
-									onChange={field.onChange}
+									onSuccess={data => field.onChange(data.data[0].url)}
 									errorMessage={fieldState.error?.message}
 								/>
 							)}
@@ -82,11 +82,11 @@ const SettingsForm = (props: SettingsFormProps) => {
 							render={({ field, fieldState }) => (
 								<UploadField
 									label='Banner'
-									onChange={field.onChange}
+									onSuccess={data => field.onChange(data.data[0].url)}
 									value={field.value}
 									errorMessage={fieldState.error?.message}
+									previewSizes={[446, 250]}
 									folder='banners'
-									aspectRatio='16:9'
 									overlay='/overlay.png'
 								/>
 							)}

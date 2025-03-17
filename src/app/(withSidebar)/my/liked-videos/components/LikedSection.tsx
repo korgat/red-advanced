@@ -18,7 +18,7 @@ const LikedSection = (props: LikedSectionProps) => {
 	return (
 		<VideoSection
 			{...rest}
-			className={cn('max-w-[800px]', {}, [className])}
+			className={cn('max-w-[800px] p-layout h-full', {}, [className])}
 			heading={{ tag: 'h1', text: 'Liked', icon: Heart }}
 			isLoading={isPending}
 			videos={data?.data.likes.map(item => item.video)}

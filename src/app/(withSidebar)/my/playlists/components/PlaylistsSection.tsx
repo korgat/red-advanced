@@ -20,7 +20,7 @@ const PlaylistsSection = (props: PlaylistsSectionProps) => {
 	return (
 		<section
 			{...rest}
-			className={cn('', {}, [className])}
+			className={cn('p-layout h-full', {}, [className])}
 		>
 			<Heading
 				className='mb-0'
