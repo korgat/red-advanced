@@ -4,6 +4,7 @@
 	"private": true,
 	"scripts": {
 		"dev": "next dev --turbopack -p 3000",
+		"dev-classic": "next dev -p 3000",
 		"build": "next build",
 		"start": "next start",
 		"lint": "next lint"
@@ -11,7 +12,6 @@
 	"dependencies": {
 		"@reduxjs/toolkit": "^2.5.0",
 		"@tanstack/react-query": "^5.64.1",
-		"@types/js-cookie": "^3.0.6",
 		"axios": "^1.7.9",
 		"clsx": "^2.1.1",
 		"dayjs": "^1.11.13",
@@ -37,6 +37,7 @@
 	"devDependencies": {
 		"@eslint/eslintrc": "^3",
 		"@trivago/prettier-plugin-sort-imports": "^5.2.1",
+		"@types/js-cookie": "^3.0.6",
 		"@types/node": "^20",
 		"@types/react": "^19",
 		"@types/react-dom": "^19",

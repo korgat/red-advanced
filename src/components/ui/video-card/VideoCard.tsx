@@ -36,8 +36,8 @@ const VideoCard = (props: VideoCardProps) => {
 					<Image
 						className='aspect-video'
 						src={item.thumbnailUrl}
-						width={400}
-						height={225}
+						width={290}
+						height={163}
 						alt={item.title}
 						quality={100}
 					/>
