@@ -25,7 +25,7 @@ const ProfileAvatar = (props: ProfileAvatarProps) => {
 					href={STUDIO.SETTINGS}
 				>
 					<Image
-						src={data?.data.channel?.avatarUrl || '/avatar.png'}
+						src={data?.data.channel?.avatarUrl || '/images/avatar.png'}
 						alt={data?.data.name || 'user'}
 						width={40}
 						height={40}

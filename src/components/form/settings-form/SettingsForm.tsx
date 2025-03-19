@@ -87,7 +87,7 @@ const SettingsForm = (props: SettingsFormProps) => {
 									errorMessage={fieldState.error?.message}
 									previewSizes={[446, 250]}
 									folder='banners'
-									overlay='/overlay.png'
+									overlay='/images/overlay.png'
 								/>
 							)}
 						/>
