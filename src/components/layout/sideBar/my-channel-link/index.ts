@@ -1,1 +1,1 @@
-export { default as MyChannelLink } from './MyChannelLink'
+export { default as MyChannelLink } from './MyChannelLink';

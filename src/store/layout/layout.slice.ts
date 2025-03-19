@@ -1,19 +1,19 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit';
 
-import type { ILayoutState } from './layout.types'
+import type { ILayoutState } from './layout.types';
 
 const initialState: ILayoutState = {
-	isSidebarOpen: true
-}
+  isSidebarOpen: true
+};
 
 export const layoutSlice = createSlice({
-	name: 'layout',
-	initialState,
-	reducers: {
-		toggleSidebar: state => {
-			state.isSidebarOpen = !state.isSidebarOpen
-		}
-	}
-})
+  name: 'layout',
+  initialState,
+  reducers: {
+    toggleSidebar: state => {
+      state.isSidebarOpen = !state.isSidebarOpen;
+    }
+  }
+});
 
-export const { toggleSidebar } = layoutSlice.actions
+export const { toggleSidebar } = layoutSlice.actions;

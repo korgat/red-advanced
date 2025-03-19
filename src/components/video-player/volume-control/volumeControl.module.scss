@@ -1,28 +1,28 @@
 .volume-slider {
-	@apply appearance-none h-[3px] w-12 rounded-full cursor-pointer opacity-90 hover:opacity-100;
+  @apply appearance-none h-[3px] w-12 rounded-full cursor-pointer opacity-90 hover:opacity-100;
 }
 
 .volume-slider::-webkit-slider-thumb {
-	appearance: none;
-	width: 10.5px;
-	height: 10.5px;
-	background-color: white;
-	border-radius: 50%;
-	cursor: pointer;
+  appearance: none;
+  width: 10.5px;
+  height: 10.5px;
+  background-color: white;
+  border-radius: 50%;
+  cursor: pointer;
 }
 
 .volume-slider::-moz-range-thumb {
-	width: 10.5px;
-	height: 10.5px;
-	background-color: white;
-	border-radius: 50%;
-	cursor: pointer;
+  width: 10.5px;
+  height: 10.5px;
+  background-color: white;
+  border-radius: 50%;
+  cursor: pointer;
 }
 
 .volume-slider::-ms-thumb {
-	width: 10.5px;
-	height: 10.5px;
-	background-color: white;
-	border-radius: 50%;
-	cursor: pointer;
+  width: 10.5px;
+  height: 10.5px;
+  background-color: white;
+  border-radius: 50%;
+  cursor: pointer;
 }

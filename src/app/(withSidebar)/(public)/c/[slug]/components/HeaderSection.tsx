@@ -1,67 +1,67 @@
-'use client'
+'use client';
 
-import { Check } from 'lucide-react'
-import Image from 'next/image'
-import React from 'react'
+import { Check } from 'lucide-react';
+import Image from 'next/image';
+import React from 'react';
 
-import { DynamicSubscriptionButton } from '@/components/subscription-button'
+import { DynamicSubscriptionButton } from '@/components/subscription-button';
 
-import Heading from '@/ui/heading/Heading'
+import Heading from '@/ui/heading/Heading';
 
-import { formatCount } from '@/lib/format-count'
-import { cn } from '@/lib/utils'
-import type { IChannel } from '@/types/chanel.types'
+import { formatCount } from '@/lib/format-count';
+import { cn } from '@/lib/utils';
+import type { IChannel } from '@/types/chanel.types';
 
 interface HeaderSectionProps extends React.HTMLAttributes<HTMLDivElement> {
-	channel: IChannel
+  channel: IChannel;
 }
 
 const HeaderSection = (props: HeaderSectionProps) => {
-	const { className = '', channel, ...rest } = props
+  const { className = '', channel, ...rest } = props;
 
-	return (
-		<div
-			{...rest}
-			className={cn('mb-10', {}, [className])}
-		>
-			<Image
-				alt={channel.slug}
-				src={channel.bannerUrl}
-				width={1284}
-				height={207}
-				priority
-				className='rounded-3xl h-[207px] w-full object-cover mb-8'
-			/>
-			<div className='flex gap-7 w-1/2'>
-				<Image
-					alt={channel.slug}
-					src={channel.avatarUrl}
-					width={150}
-					height={150}
-					priority
-					className='rounded-xl object-cover h-[150px] w-[150px]'
-				/>
-				<div>
-					<Heading
-						className='mb-0.5 text-3xl'
-						tag='h1'
-					>
-						<div className='flex items-center gap-3'>
-							{channel.user.name}
-							<Check className='text-green-500' />
-						</div>
-					</Heading>
-					<div className='flex items-center gap-3 text-sm font-semibold text-gray-500 mb-1'>
-						<div>/{channel.slug}</div>
-						<div>{formatCount(channel.subscribers.length)} subscribers</div>
-						<div>{channel.videos.length} videos</div>
-					</div>
-					<article className='text-gray-300 text-sm mb-3'>{channel.description}</article>
-					<DynamicSubscriptionButton slug={channel.slug} />
-				</div>
-			</div>
-		</div>
-	)
-}
+  return (
+    <div
+      {...rest}
+      className={cn('mb-10', {}, [className])}
+    >
+      <Image
+        alt={channel.slug}
+        src={channel.bannerUrl}
+        width={1284}
+        height={207}
+        priority
+        className='rounded-3xl h-[207px] w-full object-cover mb-8'
+      />
+      <div className='flex gap-7 w-1/2'>
+        <Image
+          alt={channel.slug}
+          src={channel.avatarUrl}
+          width={150}
+          height={150}
+          priority
+          className='rounded-xl object-cover h-[150px] w-[150px]'
+        />
+        <div>
+          <Heading
+            className='mb-0.5 text-3xl'
+            tag='h1'
+          >
+            <div className='flex items-center gap-3'>
+              {channel.user.name}
+              <Check className='text-green-500' />
+            </div>
+          </Heading>
+          <div className='flex items-center gap-3 text-sm font-semibold text-gray-500 mb-1'>
+            <div>/{channel.slug}</div>
+            <div>{formatCount(channel.subscribers.length)} subscribers</div>
+            <div>{channel.videos.length} videos</div>
+          </div>
+          <article className='text-gray-300 text-sm mb-3'>{channel.description}</article>
+          <DynamicSubscriptionButton slug={channel.slug} />
+        </div>
+      </div>
+    </div>
+  );
+};
 
-export default HeaderSection
+export default HeaderSection;

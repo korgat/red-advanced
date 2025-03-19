@@ -1,6 +1,6 @@
 export interface ISubscriptionMenuItem {
-	name: string
-	iconSrc: string
-	link: string
-	status?: 'live' | 'active'
+  name: string;
+  iconSrc: string;
+  link: string;
+  status?: 'live' | 'active';
 }

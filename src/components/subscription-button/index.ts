@@ -1,2 +1,2 @@
-export { default as SubscriptionButton } from './SubscriptionButton'
-export { DynamicSubscriptionButton } from './SubscriptionButton'
+export { default as SubscriptionButton } from './SubscriptionButton';
+export { DynamicSubscriptionButton } from './SubscriptionButton';

@@ -1,1 +1,1 @@
-export { default as UploadField } from './UploadField'
+export { default as UploadField } from './UploadField';

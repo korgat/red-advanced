@@ -1,10 +1,10 @@
-import { EnumVideoPlayerQuality } from '@/types/video.types'
+import { EnumVideoPlayerQuality } from '@/types/video.types';
 
 export const VIDEO_QUALITIES: EnumVideoPlayerQuality[] = [
-	EnumVideoPlayerQuality['4K'],
-	EnumVideoPlayerQuality['2K'],
-	EnumVideoPlayerQuality['1080p'],
-	EnumVideoPlayerQuality['720p'],
-	EnumVideoPlayerQuality['480p'],
-	EnumVideoPlayerQuality['360p']
-]
+  EnumVideoPlayerQuality['4K'],
+  EnumVideoPlayerQuality['2K'],
+  EnumVideoPlayerQuality['1080p'],
+  EnumVideoPlayerQuality['720p'],
+  EnumVideoPlayerQuality['480p'],
+  EnumVideoPlayerQuality['360p']
+];

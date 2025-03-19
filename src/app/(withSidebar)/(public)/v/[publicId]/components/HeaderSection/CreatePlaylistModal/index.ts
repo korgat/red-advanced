@@ -1,1 +1,1 @@
-export { default as CreatePlaylistModal } from './CreatePlaylistModal'
+export { default as CreatePlaylistModal } from './CreatePlaylistModal';

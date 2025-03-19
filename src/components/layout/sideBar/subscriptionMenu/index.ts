@@ -1,1 +1,1 @@
-export { default as SubscriptionMenu } from './SubscriptionMenu'
+export { default as SubscriptionMenu } from './SubscriptionMenu';

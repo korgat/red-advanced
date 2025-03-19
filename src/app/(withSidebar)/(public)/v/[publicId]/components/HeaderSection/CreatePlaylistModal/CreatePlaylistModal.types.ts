@@ -1,3 +1,3 @@
 export type TCreatePlaylistForm = {
-	title: string
-}
+  title: string;
+};

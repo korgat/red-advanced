@@ -1,2 +1,2 @@
-export { default as AuthForm } from './AuthForm'
-export * from './authForm.types'
+export { default as AuthForm } from './AuthForm';
+export * from './authForm.types';

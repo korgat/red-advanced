@@ -1,3 +1,3 @@
-import type { TRootState } from '..'
+import type { TRootState } from '..';
 
-export const selectSidebarStatus = (state: TRootState) => state.layout.isSidebarOpen
+export const selectSidebarStatus = (state: TRootState) => state.layout.isSidebarOpen;

@@ -1,1 +1,1 @@
-export { default as LikedSection } from './LikedSection'
+export { default as LikedSection } from './LikedSection';

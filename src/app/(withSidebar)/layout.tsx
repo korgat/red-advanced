@@ -1,9 +1,9 @@
-import Layout from '@/components/layout/Layout'
+import Layout from '@/components/layout/Layout';
 
 export default function StudioLayout({
-	children
+  children
 }: Readonly<{
-	children: React.ReactNode
+  children: React.ReactNode;
 }>) {
-	return <Layout>{children}</Layout>
+  return <Layout>{children}</Layout>;
 }

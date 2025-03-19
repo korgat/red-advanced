@@ -1,21 +1,21 @@
-import { axiosAuth, axiosCommon } from '@/api/axios'
+import { axiosAuth, axiosCommon } from '@/api/axios';
 
-import type { IChannel } from '@/types/chanel.types'
+import type { IChannel } from '@/types/chanel.types';
 
 export class ChannelService {
-	private path = '/channels'
+  private path = '/channels';
 
-	getAllChannels() {
-		return axiosCommon.get<IChannel[]>(this.path)
-	}
+  getAllChannels() {
+    return axiosCommon.get<IChannel[]>(this.path);
+  }
 
-	getChannel(slug: string | null) {
-		return axiosCommon.get<IChannel>(`${this.path}/by-slug/${slug}`)
-	}
+  getChannel(slug: string | null) {
+    return axiosCommon.get<IChannel>(`${this.path}/by-slug/${slug}`);
+  }
 
-	toggleSubscribe(channelSlug: string) {
-		return axiosAuth.patch(`${this.path}/toggle-subscribe/${channelSlug}`)
-	}
+  toggleSubscribe(channelSlug: string) {
+    return axiosAuth.patch(`${this.path}/toggle-subscribe/${channelSlug}`);
+  }
 }
 
-export const channelService = new ChannelService()
+export const channelService = new ChannelService();

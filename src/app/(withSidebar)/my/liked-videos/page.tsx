@@ -1,13 +1,13 @@
-import type { Metadata } from 'next'
+import type { Metadata } from 'next';
 
-import { LikedSection } from './components'
-import { NO_INDEX_PAGE } from '@/const/seo.const'
+import { LikedSection } from './components';
+import { NO_INDEX_PAGE } from '@/const/seo.const';
 
 export const metadata: Metadata = {
-	title: 'Liked',
-	...NO_INDEX_PAGE
-}
+  title: 'Liked',
+  ...NO_INDEX_PAGE
+};
 
 export default function LikedVideosPage() {
-	return <LikedSection />
+  return <LikedSection />;
 }

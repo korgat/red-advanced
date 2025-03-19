@@ -1,1 +1,1 @@
-export { default as IconMenu } from './IconMenu'
+export { default as IconMenu } from './IconMenu';

@@ -1,3 +1,3 @@
 export interface ICommentForm {
-	comment: string
+  comment: string;
 }

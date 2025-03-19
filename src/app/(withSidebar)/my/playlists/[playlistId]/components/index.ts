@@ -1,1 +1,1 @@
-export { default as PlaylistSection } from './PlaylistSection'
+export { default as PlaylistSection } from './PlaylistSection';

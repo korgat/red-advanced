@@ -1,1 +1,1 @@
-export { default as ToggleArticle } from './ToggleArticle'
+export { default as ToggleArticle } from './ToggleArticle';
